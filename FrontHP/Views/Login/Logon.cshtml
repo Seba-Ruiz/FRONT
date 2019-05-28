@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logon</title>
+</head>
+<body>
+    @using (Html.BeginForm("Logon", "Login", FormMethod.Post))
+    {
+        <div>
+            @Html.TextBox("txtUserName", "", new { @placeholder = "Usuario", @required = "" })
+            @Html.TextBox("txtPassword", "", new { @placeholder = "Contraseña", @required = "", type = "password" })
+            <div style="color:red">@ViewBag.Falla</div>
+            <button type="submit">Ingresar</button>
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FRONTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="WEB_Aplicacion">
+    <Key>
+      <PropertyRef Name="idapp" />
+    </Key>
+    <Property Name="idapp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ruta" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WEB_AppxServicio">
+    <Key>
+      <PropertyRef Name="idsrvapp" />
+    </Key>
+    <Property Name="idsrvapp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idservicio" Type="int" Nullable="false" />
+    <Property Name="idapp" Type="int" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WEB_AuditoriaAppxServ">
+    <Key>
+      <PropertyRef Name="idauditoria" />
+    </Key>
+    <Property Name="idauditoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idsrvapp" Type="int" Nullable="false" />
+    <Property Name="estado" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="fechahora" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WEB_Servicio">
+    <Key>
+      <PropertyRef Name="idservicio" />
+    </Key>
+    <Property Name="idservicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="servicio" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_WEB_AppxServicio_WEB_Aplicacion">
+    <End Role="WEB_Aplicacion" Type="Self.WEB_Aplicacion" Multiplicity="1" />
+    <End Role="WEB_AppxServicio" Type="Self.WEB_AppxServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_Aplicacion">
+        <PropertyRef Name="idapp" />
+      </Principal>
+      <Dependent Role="WEB_AppxServicio">
+        <PropertyRef Name="idapp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_AppxServicio_WEB_Servicio">
+    <End Role="WEB_Servicio" Type="Self.WEB_Servicio" Multiplicity="1" />
+    <End Role="WEB_AppxServicio" Type="Self.WEB_AppxServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_Servicio">
+        <PropertyRef Name="idservicio" />
+      </Principal>
+      <Dependent Role="WEB_AppxServicio">
+        <PropertyRef Name="idservicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_AuditoriaAppxServ_WEB_AppxServicio">
+    <End Role="WEB_AppxServicio" Type="Self.WEB_AppxServicio" Multiplicity="1" />
+    <End Role="WEB_AuditoriaAppxServ" Type="Self.WEB_AuditoriaAppxServ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_AppxServicio">
+        <PropertyRef Name="idsrvapp" />
+      </Principal>
+      <Dependent Role="WEB_AuditoriaAppxServ">
+        <PropertyRef Name="idsrvapp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FRONTModelStoreContainer">
+    <EntitySet Name="WEB_Aplicacion" EntityType="Self.WEB_Aplicacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_AppxServicio" EntityType="Self.WEB_AppxServicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_AuditoriaAppxServ" EntityType="Self.WEB_AuditoriaAppxServ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_Servicio" EntityType="Self.WEB_Servicio" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_WEB_AppxServicio_WEB_Aplicacion" Association="Self.FK_WEB_AppxServicio_WEB_Aplicacion">
+      <End Role="WEB_Aplicacion" EntitySet="WEB_Aplicacion" />
+      <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_AppxServicio_WEB_Servicio" Association="Self.FK_WEB_AppxServicio_WEB_Servicio">
+      <End Role="WEB_Servicio" EntitySet="WEB_Servicio" />
+      <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" Association="Self.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio">
+      <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
+      <End Role="WEB_AuditoriaAppxServ" EntitySet="WEB_AuditoriaAppxServ" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -29,5 +29,6 @@ namespace Modelo
         public virtual DbSet<WEB_AppxServicio> WEB_AppxServicio { get; set; }
         public virtual DbSet<WEB_AuditoriaAppxServ> WEB_AuditoriaAppxServ { get; set; }
         public virtual DbSet<WEB_Servicio> WEB_Servicio { get; set; }
+        public virtual DbSet<WEB_Subordinado> WEB_Subordinado { get; set; }
     }
 }

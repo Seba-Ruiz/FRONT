@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FRONTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FRONTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="WEB_Aplicacion">
           <Key>
             <PropertyRef Name="idapp" />
@@ -39,6 +39,19 @@
           <Property Name="idservicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="servicio" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WEB_Subordinado">
+          <Key>
+            <PropertyRef Name="id_subordinado" />
+          </Key>
+          <Property Name="id_subordinado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="150" />
+          <Property Name="mail" Type="nvarchar" MaxLength="150" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="servicio_id" Type="int" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="150" />
+          <Property Name="dni" Type="int" />
+          <Property Name="nombre_referente" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_WEB_AppxServicio_WEB_Aplicacion">
           <End Role="WEB_Aplicacion" Type="Self.WEB_Aplicacion" Multiplicity="1" />
@@ -76,11 +89,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WEB_Subordinado_WEB_Servicio">
+          <End Role="WEB_Servicio" Type="Self.WEB_Servicio" Multiplicity="0..1" />
+          <End Role="WEB_Subordinado" Type="Self.WEB_Subordinado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WEB_Servicio">
+              <PropertyRef Name="idservicio" />
+            </Principal>
+            <Dependent Role="WEB_Subordinado">
+              <PropertyRef Name="servicio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FRONTModelStoreContainer">
           <EntitySet Name="WEB_Aplicacion" EntityType="Self.WEB_Aplicacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WEB_AppxServicio" EntityType="Self.WEB_AppxServicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WEB_AuditoriaAppxServ" EntityType="Self.WEB_AuditoriaAppxServ" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WEB_Servicio" EntityType="Self.WEB_Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WEB_Subordinado" EntityType="Self.WEB_Subordinado" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_WEB_AppxServicio_WEB_Aplicacion" Association="Self.FK_WEB_AppxServicio_WEB_Aplicacion">
             <End Role="WEB_Aplicacion" EntitySet="WEB_Aplicacion" />
             <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
@@ -93,38 +119,25 @@
             <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
             <End Role="WEB_AuditoriaAppxServ" EntitySet="WEB_AuditoriaAppxServ" />
           </AssociationSet>
+          <AssociationSet Name="FK_WEB_Subordinado_WEB_Servicio" Association="Self.FK_WEB_Subordinado_WEB_Servicio">
+            <End Role="WEB_Servicio" EntitySet="WEB_Servicio" />
+            <End Role="WEB_Subordinado" EntitySet="WEB_Subordinado" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FRONTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="FRONTEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="WEB_Aplicacion" EntityType="FRONTModel.WEB_Aplicacion" />
-          <EntitySet Name="WEB_AppxServicio" EntityType="FRONTModel.WEB_AppxServicio" />
-          <EntitySet Name="WEB_AuditoriaAppxServ" EntityType="FRONTModel.WEB_AuditoriaAppxServ" />
-          <EntitySet Name="WEB_Servicio" EntityType="FRONTModel.WEB_Servicio" />
-          <AssociationSet Name="FK_WEB_AppxServicio_WEB_Aplicacion" Association="FRONTModel.FK_WEB_AppxServicio_WEB_Aplicacion">
-            <End Role="WEB_Aplicacion" EntitySet="WEB_Aplicacion" />
-            <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WEB_AppxServicio_WEB_Servicio" Association="FRONTModel.FK_WEB_AppxServicio_WEB_Servicio">
-            <End Role="WEB_Servicio" EntitySet="WEB_Servicio" />
-            <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" Association="FRONTModel.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio">
-            <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
-            <End Role="WEB_AuditoriaAppxServ" EntitySet="WEB_AuditoriaAppxServ" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="WEB_Aplicacion">
           <Key>
             <PropertyRef Name="idapp" />
           </Key>
           <Property Name="idapp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ruta" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ruta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="WEB_AppxServicio" Relationship="FRONTModel.FK_WEB_AppxServicio_WEB_Aplicacion" FromRole="WEB_Aplicacion" ToRole="WEB_AppxServicio" />
+          <NavigationProperty Name="WEB_AppxServicio" Relationship="Self.FK_WEB_AppxServicio_WEB_Aplicacion" FromRole="WEB_Aplicacion" ToRole="WEB_AppxServicio" />
         </EntityType>
         <EntityType Name="WEB_AppxServicio">
           <Key>
@@ -134,9 +147,9 @@
           <Property Name="idservicio" Type="Int32" Nullable="false" />
           <Property Name="idapp" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="WEB_Aplicacion" Relationship="FRONTModel.FK_WEB_AppxServicio_WEB_Aplicacion" FromRole="WEB_AppxServicio" ToRole="WEB_Aplicacion" />
-          <NavigationProperty Name="WEB_Servicio" Relationship="FRONTModel.FK_WEB_AppxServicio_WEB_Servicio" FromRole="WEB_AppxServicio" ToRole="WEB_Servicio" />
-          <NavigationProperty Name="WEB_AuditoriaAppxServ" Relationship="FRONTModel.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" FromRole="WEB_AppxServicio" ToRole="WEB_AuditoriaAppxServ" />
+          <NavigationProperty Name="WEB_Aplicacion" Relationship="Self.FK_WEB_AppxServicio_WEB_Aplicacion" FromRole="WEB_AppxServicio" ToRole="WEB_Aplicacion" />
+          <NavigationProperty Name="WEB_Servicio" Relationship="Self.FK_WEB_AppxServicio_WEB_Servicio" FromRole="WEB_AppxServicio" ToRole="WEB_Servicio" />
+          <NavigationProperty Name="WEB_AuditoriaAppxServ" Relationship="Self.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" FromRole="WEB_AppxServicio" ToRole="WEB_AuditoriaAppxServ" />
         </EntityType>
         <EntityType Name="WEB_AuditoriaAppxServ">
           <Key>
@@ -144,22 +157,37 @@
           </Key>
           <Property Name="idauditoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idsrvapp" Type="Int32" Nullable="false" />
-          <Property Name="estado" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fechahora" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="WEB_AppxServicio" Relationship="FRONTModel.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" FromRole="WEB_AuditoriaAppxServ" ToRole="WEB_AppxServicio" />
+          <NavigationProperty Name="WEB_AppxServicio" Relationship="Self.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" FromRole="WEB_AuditoriaAppxServ" ToRole="WEB_AppxServicio" />
         </EntityType>
         <EntityType Name="WEB_Servicio">
           <Key>
             <PropertyRef Name="idservicio" />
           </Key>
           <Property Name="idservicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="servicio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="servicio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="WEB_AppxServicio" Relationship="FRONTModel.FK_WEB_AppxServicio_WEB_Servicio" FromRole="WEB_Servicio" ToRole="WEB_AppxServicio" />
+          <NavigationProperty Name="WEB_AppxServicio" Relationship="Self.FK_WEB_AppxServicio_WEB_Servicio" FromRole="WEB_Servicio" ToRole="WEB_AppxServicio" />
+          <NavigationProperty Name="WEB_Subordinado" Relationship="Self.FK_WEB_Subordinado_WEB_Servicio" FromRole="WEB_Servicio" ToRole="WEB_Subordinado" />
+        </EntityType>
+        <EntityType Name="WEB_Subordinado">
+          <Key>
+            <PropertyRef Name="id_subordinado" />
+          </Key>
+          <Property Name="id_subordinado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="mail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="servicio_id" Type="Int32" />
+          <Property Name="apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="dni" Type="Int32" />
+          <Property Name="nombre_referente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WEB_Servicio" Relationship="Self.FK_WEB_Subordinado_WEB_Servicio" FromRole="WEB_Subordinado" ToRole="WEB_Servicio" />
         </EntityType>
         <Association Name="FK_WEB_AppxServicio_WEB_Aplicacion">
-          <End Type="FRONTModel.WEB_Aplicacion" Role="WEB_Aplicacion" Multiplicity="1" />
-          <End Type="FRONTModel.WEB_AppxServicio" Role="WEB_AppxServicio" Multiplicity="*" />
+          <End Role="WEB_Aplicacion" Type="Self.WEB_Aplicacion" Multiplicity="1" />
+          <End Role="WEB_AppxServicio" Type="Self.WEB_AppxServicio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WEB_Aplicacion">
               <PropertyRef Name="idapp" />
@@ -170,8 +198,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WEB_AppxServicio_WEB_Servicio">
-          <End Type="FRONTModel.WEB_Servicio" Role="WEB_Servicio" Multiplicity="1" />
-          <End Type="FRONTModel.WEB_AppxServicio" Role="WEB_AppxServicio" Multiplicity="*" />
+          <End Role="WEB_Servicio" Type="Self.WEB_Servicio" Multiplicity="1" />
+          <End Role="WEB_AppxServicio" Type="Self.WEB_AppxServicio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WEB_Servicio">
               <PropertyRef Name="idservicio" />
@@ -182,8 +210,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WEB_AuditoriaAppxServ_WEB_AppxServicio">
-          <End Type="FRONTModel.WEB_AppxServicio" Role="WEB_AppxServicio" Multiplicity="1" />
-          <End Type="FRONTModel.WEB_AuditoriaAppxServ" Role="WEB_AuditoriaAppxServ" Multiplicity="*" />
+          <End Role="WEB_AppxServicio" Type="Self.WEB_AppxServicio" Multiplicity="1" />
+          <End Role="WEB_AuditoriaAppxServ" Type="Self.WEB_AuditoriaAppxServ" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WEB_AppxServicio">
               <PropertyRef Name="idsrvapp" />
@@ -193,6 +221,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WEB_Subordinado_WEB_Servicio">
+          <End Role="WEB_Servicio" Type="Self.WEB_Servicio" Multiplicity="0..1" />
+          <End Role="WEB_Subordinado" Type="Self.WEB_Subordinado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WEB_Servicio">
+              <PropertyRef Name="idservicio" />
+            </Principal>
+            <Dependent Role="WEB_Subordinado">
+              <PropertyRef Name="servicio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FRONTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WEB_Aplicacion" EntityType="Self.WEB_Aplicacion" />
+          <EntitySet Name="WEB_AppxServicio" EntityType="Self.WEB_AppxServicio" />
+          <EntitySet Name="WEB_AuditoriaAppxServ" EntityType="Self.WEB_AuditoriaAppxServ" />
+          <EntitySet Name="WEB_Servicio" EntityType="Self.WEB_Servicio" />
+          <EntitySet Name="WEB_Subordinado" EntityType="Self.WEB_Subordinado" />
+          <AssociationSet Name="FK_WEB_AppxServicio_WEB_Aplicacion" Association="Self.FK_WEB_AppxServicio_WEB_Aplicacion">
+            <End Role="WEB_Aplicacion" EntitySet="WEB_Aplicacion" />
+            <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WEB_AppxServicio_WEB_Servicio" Association="Self.FK_WEB_AppxServicio_WEB_Servicio">
+            <End Role="WEB_Servicio" EntitySet="WEB_Servicio" />
+            <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" Association="Self.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio">
+            <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
+            <End Role="WEB_AuditoriaAppxServ" EntitySet="WEB_AuditoriaAppxServ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WEB_Subordinado_WEB_Servicio" Association="Self.FK_WEB_Subordinado_WEB_Servicio">
+            <End Role="WEB_Servicio" EntitySet="WEB_Servicio" />
+            <End Role="WEB_Subordinado" EntitySet="WEB_Subordinado" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -202,39 +265,53 @@
           <EntitySetMapping Name="WEB_Aplicacion">
             <EntityTypeMapping TypeName="FRONTModel.WEB_Aplicacion">
               <MappingFragment StoreEntitySet="WEB_Aplicacion">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="ruta" ColumnName="ruta" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idapp" ColumnName="idapp" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WEB_AppxServicio">
             <EntityTypeMapping TypeName="FRONTModel.WEB_AppxServicio">
               <MappingFragment StoreEntitySet="WEB_AppxServicio">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="idapp" ColumnName="idapp" />
-                <ScalarProperty Name="idservicio" ColumnName="idservicio" />
                 <ScalarProperty Name="idsrvapp" ColumnName="idsrvapp" />
+                <ScalarProperty Name="idservicio" ColumnName="idservicio" />
+                <ScalarProperty Name="idapp" ColumnName="idapp" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WEB_AuditoriaAppxServ">
             <EntityTypeMapping TypeName="FRONTModel.WEB_AuditoriaAppxServ">
               <MappingFragment StoreEntitySet="WEB_AuditoriaAppxServ">
-                <ScalarProperty Name="fechahora" ColumnName="fechahora" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="idsrvapp" ColumnName="idsrvapp" />
                 <ScalarProperty Name="idauditoria" ColumnName="idauditoria" />
+                <ScalarProperty Name="idsrvapp" ColumnName="idsrvapp" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fechahora" ColumnName="fechahora" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WEB_Servicio">
             <EntityTypeMapping TypeName="FRONTModel.WEB_Servicio">
               <MappingFragment StoreEntitySet="WEB_Servicio">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="servicio" ColumnName="servicio" />
                 <ScalarProperty Name="idservicio" ColumnName="idservicio" />
+                <ScalarProperty Name="servicio" ColumnName="servicio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WEB_Subordinado">
+            <EntityTypeMapping TypeName="FRONTModel.WEB_Subordinado">
+              <MappingFragment StoreEntitySet="WEB_Subordinado">
+                <ScalarProperty Name="id_subordinado" ColumnName="id_subordinado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="servicio_id" ColumnName="servicio_id" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="nombre_referente" ColumnName="nombre_referente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

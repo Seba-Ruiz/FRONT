@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acceso", "Acceso\Acceso.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "Modelo\Modelo.csproj", "{4A9F5BAA-FF35-4076-9C7D-1C1F43C17724}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{B3EF9BB9-F255-47D1-836F-0333CFE855F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio", "Servicio\Servicio.csproj", "{45F0F482-89BB-4F39-BC61-9DC9F43CA241}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,12 +31,20 @@ Global
 		{4A9F5BAA-FF35-4076-9C7D-1C1F43C17724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A9F5BAA-FF35-4076-9C7D-1C1F43C17724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A9F5BAA-FF35-4076-9C7D-1C1F43C17724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3EF9BB9-F255-47D1-836F-0333CFE855F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3EF9BB9-F255-47D1-836F-0333CFE855F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3EF9BB9-F255-47D1-836F-0333CFE855F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3EF9BB9-F255-47D1-836F-0333CFE855F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F0F482-89BB-4F39-BC61-9DC9F43CA241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F0F482-89BB-4F39-BC61-9DC9F43CA241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F0F482-89BB-4F39-BC61-9DC9F43CA241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F0F482-89BB-4F39-BC61-9DC9F43CA241}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		VisualSVNWorkingCopyRoot = .
 		SolutionGuid = {63B44316-8D41-4DBD-908A-5F2B67F244B2}
+		VisualSVNWorkingCopyRoot = .
 	EndGlobalSection
 EndGlobal

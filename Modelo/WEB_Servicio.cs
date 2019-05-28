@@ -18,6 +18,7 @@ namespace Modelo
         public WEB_Servicio()
         {
             this.WEB_AppxServicio = new HashSet<WEB_AppxServicio>();
+            this.WEB_Subordinado = new HashSet<WEB_Subordinado>();
         }
     
         public int idservicio { get; set; }
@@ -26,5 +27,7 @@ namespace Modelo
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WEB_AppxServicio> WEB_AppxServicio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WEB_Subordinado> WEB_Subordinado { get; set; }
     }
 }

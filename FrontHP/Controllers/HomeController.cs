@@ -36,6 +36,13 @@ namespace FrontHP.Controllers
             return RedirectToAction("Logon", "Login");
         }
 
+        public ActionResult Prueba()
+        {
+            return View();
+        }
+
+
+
         public ActionResult Coso()
         {
             return View();

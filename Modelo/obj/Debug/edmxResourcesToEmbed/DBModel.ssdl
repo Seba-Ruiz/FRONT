@@ -35,6 +35,19 @@
     <Property Name="servicio" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="WEB_Subordinado">
+    <Key>
+      <PropertyRef Name="id_subordinado" />
+    </Key>
+    <Property Name="id_subordinado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="150" />
+    <Property Name="mail" Type="nvarchar" MaxLength="150" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="servicio_id" Type="int" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="150" />
+    <Property Name="dni" Type="int" />
+    <Property Name="nombre_referente" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <Association Name="FK_WEB_AppxServicio_WEB_Aplicacion">
     <End Role="WEB_Aplicacion" Type="Self.WEB_Aplicacion" Multiplicity="1" />
     <End Role="WEB_AppxServicio" Type="Self.WEB_AppxServicio" Multiplicity="*" />
@@ -71,11 +84,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_WEB_Subordinado_WEB_Servicio">
+    <End Role="WEB_Servicio" Type="Self.WEB_Servicio" Multiplicity="0..1" />
+    <End Role="WEB_Subordinado" Type="Self.WEB_Subordinado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_Servicio">
+        <PropertyRef Name="idservicio" />
+      </Principal>
+      <Dependent Role="WEB_Subordinado">
+        <PropertyRef Name="servicio_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="FRONTModelStoreContainer">
     <EntitySet Name="WEB_Aplicacion" EntityType="Self.WEB_Aplicacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WEB_AppxServicio" EntityType="Self.WEB_AppxServicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WEB_AuditoriaAppxServ" EntityType="Self.WEB_AuditoriaAppxServ" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WEB_Servicio" EntityType="Self.WEB_Servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_Subordinado" EntityType="Self.WEB_Subordinado" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_WEB_AppxServicio_WEB_Aplicacion" Association="Self.FK_WEB_AppxServicio_WEB_Aplicacion">
       <End Role="WEB_Aplicacion" EntitySet="WEB_Aplicacion" />
       <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
@@ -87,6 +113,10 @@
     <AssociationSet Name="FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" Association="Self.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio">
       <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
       <End Role="WEB_AuditoriaAppxServ" EntitySet="WEB_AuditoriaAppxServ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_Subordinado_WEB_Servicio" Association="Self.FK_WEB_Subordinado_WEB_Servicio">
+      <End Role="WEB_Servicio" EntitySet="WEB_Servicio" />
+      <End Role="WEB_Subordinado" EntitySet="WEB_Subordinado" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

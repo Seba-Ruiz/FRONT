@@ -2,6 +2,9 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using Acceso;
+using Dominio;
+using Servicio.DTO;
+using Servicio.Servicio;
 
 namespace FrontHP.Controllers
 {
@@ -12,6 +15,9 @@ namespace FrontHP.Controllers
         {
             return View();
         }
+
+       
+
 
         [HttpGet]
         public JsonResult Menu()
@@ -36,17 +42,7 @@ namespace FrontHP.Controllers
             return RedirectToAction("Logon", "Login");
         }
 
-        public ActionResult Prueba()
-        {
-            return View();
-        }
-
-
-
-        public ActionResult Coso()
-        {
-            return View();
-        }
+       
 
     }
 }

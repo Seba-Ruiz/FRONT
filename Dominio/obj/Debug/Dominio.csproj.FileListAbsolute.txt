@@ -1,0 +1,15 @@
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\Dominio.dll.config
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\Dominio.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\Dominio.pdb
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\EntityFramework.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\Modelo.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\Modelo.pdb
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\Modelo.dll.config
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\EntityFramework.xml
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\obj\Debug\Dominio.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Dominio\obj\Debug\Dominio.pdb

@@ -1,0 +1,74 @@
+﻿@model Servicio.DTO.DTO_Subordinado
+@{
+    ViewBag.Title = "Cargar Subordinado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title"><b>SOLICITUD PARA WIFI</b></h4>
+            <p class="text-muted m-b-30 font-13">
+                Llene este formulario para que el referente informático del servicio pueda dar de alta al equipo del empleado.
+            </p>
+
+
+            @using (Html.BeginForm("GuardarSubordinado", "Subordinado", FormMethod.Post))
+            {
+
+
+                <div>
+                    <h3>Empleado</h3>
+
+                    <div class="form-group clearfix">
+                        @Html.Label("Seleccione el Sector del Empleado")
+                        @Html.DropDownListFor(x => x.servicio, new SelectList(ViewBag.servicios, "idservicio", "servicio"), new { @class = "form-control", @style = "width:250px;" })
+                    </div>
+
+                    <div class="form-group clearfix">
+                        @Html.Label("Nombre del empleado")
+                        @Html.TextBoxFor(x => x.nombre, new { @class = "form-control", @style = "width:250px;" })
+                        @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
+
+                    </div>
+                    <div class="form-group clearfix">
+                        @Html.Label("Apellido del empleado")
+                        @Html.TextBoxFor(x => x.apellido, new { @class = "form-control", @style = "width:250px;" })
+                        @Html.ValidationMessageFor(x => x.apellido, null, new { @class = "label label-danger" })
+
+                    </div>
+                    <div class="form-group clearfix">
+                        @Html.Label("E-mail del empleado")
+                        @Html.TextBoxFor(x => x.mail, new { @class = "form-control", @style = "width:250px;" })
+                        @Html.ValidationMessageFor(x => x.mail, null, new { @class = "label label-danger" })
+
+                    </div>
+                    <div class="form-group clearfix">
+                        @Html.Label("DNI del empleado")
+                        @Html.TextBoxFor(x => x.dni, new { @class = "form-control", @style = "width:250px;" })
+                        @Html.ValidationMessageFor(x => x.dni, null, new { @class = "label label-danger" })
+                    </div>
+
+                    <div class="form-group clearfix">
+                        @Html.Label("Número de teléfono del empleado")
+                        @Html.TextBoxFor(x => x.telefono, new { @class = "form-control", @style = "width:250px;" })
+                        @Html.ValidationMessageFor(x => x.telefono, null, new { @class = "label label-danger" })
+
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-custom waves-effect waves-light">Guardar</button>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+    <div class="col-md-2"></div>
+</div>
+
+
+

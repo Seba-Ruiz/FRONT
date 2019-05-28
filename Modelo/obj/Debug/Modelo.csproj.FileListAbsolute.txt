@@ -10,3 +10,15 @@ C:\Users\sebastian.roggerone\source\repos\FrontHPv1.1\Modelo\obj\Debug\Modelo.cs
 C:\Users\sebastian.roggerone\source\repos\FrontHPv1.1\Modelo\obj\Debug\Modelo.csproj.CopyComplete
 C:\Users\sebastian.roggerone\source\repos\FrontHPv1.1\Modelo\obj\Debug\Modelo.dll
 C:\Users\sebastian.roggerone\source\repos\FrontHPv1.1\Modelo\obj\Debug\Modelo.pdb
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\bin\Debug\Modelo.dll.config
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\bin\Debug\Modelo.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\bin\Debug\Modelo.pdb
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\bin\Debug\EntityFramework.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\bin\Debug\EntityFramework.xml
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.csprojAssemblyReference.cache
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.csproj.CoreCompileInputs.cache
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.csproj.CopyComplete
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.pdb

@@ -37,3 +37,6 @@ C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Servicio\obj\Debug\Servicio.csp
 C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Servicio\obj\Debug\Servicio.csproj.CopyComplete
 C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Servicio\obj\Debug\Servicio.dll
 C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Servicio\obj\Debug\Servicio.pdb
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Servicio\bin\Debug\Acceso.dll
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Servicio\bin\Debug\Acceso.pdb
+C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Servicio\bin\Debug\Acceso.dll.config

@@ -33,8 +33,7 @@ namespace FrontHP.Controllers
 
             servicio_subordinado srv = new servicio_subordinado();
 
-
-            var resultado = srv.GuardarSubordinado(dto);
+            var resultado = srv.GuardarSubordinado(dto, User.Identity.Name);
 
             if (resultado == null)
             {

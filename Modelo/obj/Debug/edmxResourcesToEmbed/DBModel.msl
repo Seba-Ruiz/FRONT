@@ -50,7 +50,8 @@
           <ScalarProperty Name="servicio_id" ColumnName="servicio_id" />
           <ScalarProperty Name="apellido" ColumnName="apellido" />
           <ScalarProperty Name="dni" ColumnName="dni" />
-          <ScalarProperty Name="nombre_referente" ColumnName="nombre_referente" />
+          <ScalarProperty Name="registrado_por" ColumnName="registrado_por" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

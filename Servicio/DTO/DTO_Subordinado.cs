@@ -16,15 +16,15 @@ namespace Servicio.DTO
         public string apellido { get; set; }
 
         [Required(ErrorMessage = "Por favor ingrese un mail valido")]
-        [Remote("ExisteMail", "Home", HttpMethod = "POST")]
+        [Remote("ExisteMail", "Subordinado", HttpMethod = "POST")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
         public string mail { get; set; }
 
         [Required(ErrorMessage = "Por favor ingrese un dni valido")]
-        [Remote("ExisteDni", "Home",  HttpMethod = "POST")]
+        [Remote("ExisteDni", "Subordinado",  HttpMethod = "POST")]
         [Range(10000000, 99999999, ErrorMessage = "El dni debe contener 8 digitos")]
-        public int dni { get; set; }
+        public int? dni { get; set; }
         public int servicio { get; set; }
 
         [Required(ErrorMessage = "Por favor ingrese un telefono valido")]

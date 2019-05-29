@@ -53,7 +53,8 @@
     <Property Name="servicio_id" Type="Int32" />
     <Property Name="apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="dni" Type="Int32" />
-    <Property Name="nombre_referente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="registrado_por" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="fecha_registro" Type="DateTime" Precision="0" />
     <NavigationProperty Name="WEB_Servicio" Relationship="Self.FK_WEB_Subordinado_WEB_Servicio" FromRole="WEB_Subordinado" ToRole="WEB_Servicio" />
   </EntityType>
   <Association Name="FK_WEB_AppxServicio_WEB_Aplicacion">

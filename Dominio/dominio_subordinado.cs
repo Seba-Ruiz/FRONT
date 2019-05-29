@@ -70,6 +70,24 @@ namespace Dominio
             return tel;
         }
 
+        public List<WEB_Subordinado> ObtenerPorIDServicio(int id)
+        {
+            var tel = new List<WEB_Subordinado>();
+            try
+            {
+                using (var ctx = new FRONTEntities())
+
+                    tel = ctx.WEB_Subordinado.Where(x=>x.servicio_id==id)
+                        .ToList();
+            }
+            catch (Exception E)
+            {
+
+                throw E;
+            }
+            return tel;
+        }
+
 
     }
 }

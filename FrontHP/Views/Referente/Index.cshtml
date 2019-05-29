@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Modelo.WEB_Subordinado>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+           
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Estado</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>@item.nombre</td>
+                <td>@item.apellido</td>
+
+                @if (Convert.ToBoolean(@item.estado))
+                {
+                    <td>Registrado</td>
+                }
+                else
+                {
+                    <td>No Registrado</td>
+                }
+                <td>@item.mail</td>
+
+                @if (Convert.ToBoolean(@item.estado))
+                {
+                    <td>
+                        <a class="btn btn-xs btn-primary" title="Modificar solicitud">Modificar</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a class="btn btn-xs btn-danger" title="Crear Solicitud">Registrar</a>
+                    </td>
+
+                }
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+

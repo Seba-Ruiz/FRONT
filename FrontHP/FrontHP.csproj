@@ -2867,6 +2867,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ReferenteController.cs" />
     <Compile Include="Controllers\SubordinadoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3122,6 +3123,7 @@
     <Content Include="Views\Subordinado\Exito.cshtml" />
     <Content Include="Views\Subordinado\Error.cshtml" />
     <Content Include="Views\Subordinado\CargarSubordinado.cshtml" />
+    <Content Include="Views\Referente\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

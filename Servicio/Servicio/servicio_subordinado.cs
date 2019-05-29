@@ -12,7 +12,7 @@ namespace Servicio.Servicio
 {
     public class servicio_subordinado
     {
-        public string GuardarSubordinado(DTO_Subordinado dto)
+        public string GuardarSubordinado(DTO_Subordinado dto , string usuario)
         {
             dominio_subordinado sub = new dominio_subordinado();
             WEB_Subordinado modelo_sub = new WEB_Subordinado();
@@ -23,6 +23,8 @@ namespace Servicio.Servicio
             modelo_sub.nombre = dto.nombre;
             modelo_sub.servicio_id = dto.servicio;
             modelo_sub.mail = dto.mail;
+            modelo_sub.registrado_por = usuario;
+            modelo_sub.fecha_registro = DateTime.Now;
 
 
 

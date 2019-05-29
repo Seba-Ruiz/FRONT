@@ -21,7 +21,8 @@ namespace Modelo
         public Nullable<int> servicio_id { get; set; }
         public string apellido { get; set; }
         public Nullable<int> dni { get; set; }
-        public string nombre_referente { get; set; }
+        public string registrado_por { get; set; }
+        public Nullable<System.DateTime> fecha_registro { get; set; }
     
         public virtual WEB_Servicio WEB_Servicio { get; set; }
     }

@@ -46,7 +46,8 @@
     <Property Name="servicio_id" Type="int" />
     <Property Name="apellido" Type="nvarchar" MaxLength="150" />
     <Property Name="dni" Type="int" />
-    <Property Name="nombre_referente" Type="nvarchar" MaxLength="100" />
+    <Property Name="registrado_por" Type="nvarchar" MaxLength="100" />
+    <Property Name="fecha_registro" Type="date" />
   </EntityType>
   <Association Name="FK_WEB_AppxServicio_WEB_Aplicacion">
     <End Role="WEB_Aplicacion" Type="Self.WEB_Aplicacion" Multiplicity="1" />

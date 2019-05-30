@@ -78,10 +78,12 @@ namespace Servicio.Servicio
             return result;
         }
 
-
+        public string Correo_Subordinado()
+        {
+            FRONTEntities ctx = new FRONTEntities();
+            var mail = (from s in ctx.WEB_Subordinado
+                        select new { s.mail }).ToString();
+            return mail;
+        }
     }
-
-
-
-
 }

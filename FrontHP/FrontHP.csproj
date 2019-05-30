@@ -3122,6 +3122,7 @@
     <Content Include="Views\Subordinado\Exito.cshtml" />
     <Content Include="Views\Subordinado\Error.cshtml" />
     <Content Include="Views\Subordinado\CargarSubordinado.cshtml" />
+    <Content Include="Views\Home\Mailer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

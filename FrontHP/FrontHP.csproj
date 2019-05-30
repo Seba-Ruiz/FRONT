@@ -99,6 +99,7 @@
     <Content Include="assets\css\components.css" />
     <Content Include="assets\css\core.css" />
     <Content Include="assets\css\icons.css" />
+    <Content Include="assets\css\menu.css" />
     <Content Include="assets\css\pages.css" />
     <Content Include="assets\css\responsive.css" />
     <Content Include="assets\css\typicons.css" />
@@ -3124,6 +3125,7 @@
     <Content Include="Views\Subordinado\Error.cshtml" />
     <Content Include="Views\Subordinado\CargarSubordinado.cshtml" />
     <Content Include="Views\Referente\Index.cshtml" />
+    <Content Include="Views\Referente\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

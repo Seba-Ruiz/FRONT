@@ -5,70 +5,91 @@
 }
 
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <div class="card-box">
-            <h4 class="m-t-0 header-title"><b>SOLICITUD PARA WIFI</b></h4>
-            <p class="text-muted m-b-30 font-13">
-                Llene este formulario para que el referente informático del servicio pueda dar de alta al equipo del empleado.
-            </p>
-
-
-            @using (Html.BeginForm("GuardarSubordinado", "Subordinado", FormMethod.Post))
-            {
-
-
-                <div>
-                    <h3>Empleado</h3>
-
-                    <div class="form-group clearfix">
-                        @Html.Label("Seleccione el Sector del Empleado")
-                        @Html.DropDownListFor(x => x.servicio, new SelectList(ViewBag.servicios, "idservicio", "servicio"), new { @class = "form-control", @style = "width:250px;" })
+    <div class="masonry-container">
+            <div class="col-sm-8">
+                <div class="panel panel-primary panel-border">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Solicitud Legajo Digital</h3>
                     </div>
+                    <div class="panel-body">
+                        <p>
+                            Llene este formulario para registrar el empleado y para que el referente informático del sector pueda agregar el legajo digital del mismo.
+                        </p>
+                        @using (Html.BeginForm("GuardarSubordinado", "Subordinado", FormMethod.Post))
+                        {
 
-                    <div class="form-group clearfix">
-                        @Html.Label("Nombre del empleado")
-                        @Html.TextBoxFor(x => x.nombre, new { @class = "form-control", @style = "width:250px;" })
-                        @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
+                            <div>
+                                <h3 class="text-danger">Empleado</h3>
 
-                    </div>
-                    <div class="form-group clearfix">
-                        @Html.Label("Apellido del empleado")
-                        @Html.TextBoxFor(x => x.apellido, new { @class = "form-control", @style = "width:250px;" })
-                        @Html.ValidationMessageFor(x => x.apellido, null, new { @class = "label label-danger" })
+                                <div class="form-group clearfix">
+                                    @Html.Label("Seleccione el Sector del Empleado")
+                                    @Html.DropDownListFor(x => x.servicio, new SelectList(ViewBag.servicios, "idservicio", "servicio"), new { @class = "form-control", @style = "width:250px;" })
+                                </div>
 
-                    </div>
-                    <div class="form-group clearfix">
-                        @Html.Label("E-mail del empleado")
-                        @Html.TextBoxFor(x => x.mail, new { @class = "form-control", @style = "width:250px;" })
-                        @Html.ValidationMessageFor(x => x.mail, null, new { @class = "label label-danger" })
+                                <div class="form-group clearfix">
+                                    @Html.Label("Nombre del empleado")
+                                    @Html.TextBoxFor(x => x.nombre, new { @class = "form-control", @style = "width:250px;" })
+                                    @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
 
-                    </div>
-                    <div class="form-group clearfix">
-                        @Html.Label("DNI del empleado")
-                        @Html.TextBoxFor(x => x.dni, new { @class = "form-control", @style = "width:250px;" })
-                        @Html.ValidationMessageFor(x => x.dni, null, new { @class = "label label-danger" })
-                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    @Html.Label("Apellido del empleado")
+                                    @Html.TextBoxFor(x => x.apellido, new { @class = "form-control", @style = "width:250px;" })
+                                    @Html.ValidationMessageFor(x => x.apellido, null, new { @class = "label label-danger" })
 
-                    <div class="form-group clearfix">
-                        @Html.Label("Número de teléfono del empleado")
-                        @Html.TextBoxFor(x => x.telefono, new { @class = "form-control", @style = "width:250px;" })
-                        @Html.ValidationMessageFor(x => x.telefono, null, new { @class = "label label-danger" })
+                                </div>
+                                <div class="form-group clearfix">
+                                    @Html.Label("E-mail del empleado")
+                                    @Html.TextBoxFor(x => x.mail, new { @class = "form-control", @style = "width:250px;" })
+                                    @Html.ValidationMessageFor(x => x.mail, null, new { @class = "label label-danger" })
 
-                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    @Html.Label("DNI del empleado")
+                                    @Html.TextBoxFor(x => x.dni, new { @class = "form-control", @style = "width:250px;" })
+                                    @Html.ValidationMessageFor(x => x.dni, null, new { @class = "label label-danger" })
+                                </div>
 
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-custom waves-effect waves-light">Guardar</button>
+                                <div class="form-group clearfix">
+                                    @Html.Label("Número de teléfono del empleado")
+                                    @Html.TextBoxFor(x => x.telefono, new { @class = "form-control", @style = "width:250px;" })
+                                    @Html.ValidationMessageFor(x => x.telefono, null, new { @class = "label label-danger" })
+
+                                </div>
+
+
+                            </div>
+                            <div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h3>Atención</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Desea agregar el empleado?</h4>
+                                            Al aceptar se agregara el empleado al servicio seleccionado. El referente podrá gestionar su legajo digital.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn-custom btn-default">Aceptar</button>
+                                            @*<a href="#" data-dismiss="modal" class="btn btn-default">Aceptar</a>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        }
+
+                            <div class="text-center">
+                                <button class="btn-custom btn-inverse" data-toggle="modal" data-target="#mostrarmodal">Guardar</button>
+                            </div>
+
+
                     </div>
                 </div>
-            }
-
-
+            </div>
         </div>
     </div>
-
-    <div class="col-md-2"></div>
-</div>
-
-
 

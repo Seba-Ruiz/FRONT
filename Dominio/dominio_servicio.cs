@@ -45,6 +45,24 @@ namespace Dominio
             return tel;
         }
 
+        public WEB_Servicio BuscarXID(int? id_servicio)
+        {
+            var tel = new WEB_Servicio();
+            try
+            {
+                using (var ctx = new FRONTEntities())
+
+                    tel = ctx.WEB_Servicio.Where(x => x.idservicio == id_servicio)
+                        .FirstOrDefault();
+            }
+            catch (Exception E)
+            {
+
+                throw E;
+            }
+            return tel;
+        }
+
 
 
     }

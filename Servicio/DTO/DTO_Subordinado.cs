@@ -29,5 +29,9 @@ namespace Servicio.DTO
 
         [Required(ErrorMessage = "Por favor ingrese un telefono valido")]
         public string telefono { get; set; }
+
+        public string nombre_servicio { get; set; }
+
+        public bool? estado { get; set; }
     }
 }

@@ -51,11 +51,14 @@ namespace Servicio.Servicio
 
                 }
 
-
-
                 foreach (var item in Servicios_de_usuario)
                 {
-                    subor = dom_sub.ObtenerPorIDServicio(item.idservicio);
+                   var subordinados = dom_sub.ObtenerPorIDServicio(item.idservicio);
+
+                    foreach (var a in subordinados)
+                    {
+                        subor.Add(a);
+                    }
 
                 }
             }

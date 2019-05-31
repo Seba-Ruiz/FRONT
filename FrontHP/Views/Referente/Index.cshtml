@@ -3,58 +3,71 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            <h4 class="m-t-0 header-title"><b>PERSONAL</b></h4>
+            <p class="text-muted font-13 m-b-30">
+                La siguiente tabla muestra el personal que usted es referente. Para crear un legajo digital haga clic en "Registrar".
+            </p>
+           
 
-<h2>Personal del servicio que usted es Referente</h2>
-
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Estado</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Servicio</th>
-            <th scope="col">Accion</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-
-            <td>@item.nombre</td>
-            <td>@item.apellido</td>
-
-            @if (Convert.ToBoolean(@item.estado))
-            {
-                <td>Registrado</td>
-            }
-            else
-            {
-                <td>No Registrado</td>
-            }
-            <td>@item.mail</td>
-            <td>@item.nombre_servicio</td>
-
-            @if (Convert.ToBoolean(@item.estado))
-            {
-                <td>
-                    <a class="btn btn-xs btn-primary" title="Modificar solicitud">Modificar</a>
-                </td>
-            }
-            else
-            {
-                <td>
-                    <a class="btn btn-xs btn-danger" title="Crear Solicitud">Registrar</a>
-                </td>
-
-            }
-        </tr>
-        }
+                <table id="datatable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Servicio</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
 
 
-    </tbody>
-</table>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+
+                        <tr>
+
+                            <td>@item.nombre</td>
+                            <td>@item.apellido</td>
+
+                            @if (Convert.ToBoolean(@item.estado))
+                            {
+                                <td>Registrado</td>
+                            }
+                            else
+                            {
+                                <td>No Registrado</td>
+                            }
+                            
+                            <td>@item.mail</td>
+                            <td>@item.nombre_servicio</td>
+
+                            @if (Convert.ToBoolean(@item.estado))
+                            {
+                                <td>
+                                    <button class="btn btn-xs btn-primary" title="Modificar Solicitud" type="submit">Modificar</button>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.ActionLink("Registrar", "CrearLegajo",FormMethod.Get,null ,new { id=item.dni })
+                                </td>
+
+                            }
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            
+        </div>
+    </div>
+</div>
+
 

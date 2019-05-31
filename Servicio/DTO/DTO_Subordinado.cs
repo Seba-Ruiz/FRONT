@@ -33,5 +33,7 @@ namespace Servicio.DTO
         public string nombre_servicio { get; set; }
 
         public bool? estado { get; set; }
+
+
     }
 }

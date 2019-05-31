@@ -32,7 +32,7 @@ namespace FrontHP.Controllers
                 dto_sub.mail = item.mail;
                 dto_sub.nombre_servicio = serv.NombreServicio(item.servicio_id);
                 dto_sub.estado = item.estado;
-
+                dto_sub.dni = item.dni;
                 dto.Add(dto_sub);
             }
 
@@ -41,6 +41,12 @@ namespace FrontHP.Controllers
         }
 
         public ActionResult Error()
+        {
+
+            return View();
+        }
+        [HttpGet]
+         public ActionResult CrearLegajo(int? id)
         {
 
             return View();

@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Acceso;
@@ -15,9 +16,6 @@ namespace FrontHP.Controllers
         {
             return View();
         }
-
-       
-
 
         [HttpGet]
         public JsonResult Menu()
@@ -42,7 +40,11 @@ namespace FrontHP.Controllers
             return RedirectToAction("Logon", "Login");
         }
 
-       
-
+        public async Task<ActionResult> Mailer()
+        {
+            servicio_mail m = new servicio_mail();
+            await m.MandarMail();
+            return View();
+        }
     }
 }

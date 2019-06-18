@@ -1,0 +1,194 @@
+﻿@model Modelo.WEB_Subordinado
+@{
+    ViewBag.Title = "Crear Legajo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        @*<div class="btn-group pull-right m-t-15">
+            <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
+            <ul class="dropdown-menu drop-menu-right" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>*@
+
+        @*<h4 class="page-title text-default">Formulario de creación de legajo digital</h4>*@
+        <ol class="breadcrumb">
+            @*<li>
+                <a href="#">Inicio</a>
+            </li>*@
+            <li>
+                <a href="~/Referente/Index">Personal</a>
+            </li>
+            <li class="active">
+                Legajo
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title"><b>SOLICITUD DE LEGAJO DIGITAL</b></h4>
+            <p class="text-muted m-b-30 font-13">
+                Llene este formulario para solicitar los servicios que <b class="text-primary">@Model.nombre @Model.apellido</b> tendrá. Recuerde que esta solicitud tiene caracter de declaración jurada. 
+            </p>
+            <div class="row">
+                <div class="col-md-10">
+                    @using (Html.BeginForm("GuardarFormulario", "Referente", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Internet</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("internet", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;" })
+                                <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> tenga acceso a Internet, "NO" para que no tenga acceso. </small></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Unidad Personal</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("h_personal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;" })
+                                <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> disponga de unidad de red personal.</small></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Unidad Grupal</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("h_grupal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;" })
+                                <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> disponga de unidad de red del servicio.</small></span>
+                                <div id="placeholder"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Analítica</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("h_grupal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;" })
+                                <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda visualizar resultados de análisis. </small></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Rayos X</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("rayos", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;" })
+                                <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda visualizar placas. </small></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Impresora</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("impresora", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;" })
+                                <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda imprimir con recursos de la institución. </small></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Wifi</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("wifi", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;" })
+                                <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda registrar un dispositivo para acceso a internet desde el mismo. </small></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Acceso Remoto</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("vpn", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;" })
+                                <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda acceder a los servicios de la institución de forma remota. </small></span>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+
+                <script src="~/assets/js/jquery.min.js"></script>
+                <script>
+                   $(document).ready(function () {
+                        $("#h_grupal").change(function () {
+                        var mivalor = $(this).val();
+                        var url = "@Url.Action("MostrarCheckHomeGrupal", "Referente", new { id = "param-1" })";
+                        url = url.replace("param-1", mivalor);
+                        $("#placeholder").load(url);
+                    });
+                   });
+
+                </script>
+
+
+
+
+
+
+
+
+
+
+
+
+                @*<div class="col-md-6">
+            <form class="form-horizontal" role="form">
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Readonly</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" readonly="" value="Readonly value">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Disabled</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" disabled="" value="Disabled value">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Static control</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">email@example.com</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Helping text</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Helping text">
+                        <span class="help-block"><small>A block of help text that breaks onto a new line and may extend beyond one line.</small></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Input Select</label>
+                    <div class="col-sm-10">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        <h6>Multiple select</h6>
+                        <select multiple="" class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+            </form>
+        </div>*@
+
+
+            </div>
+        </div>
+    </div>
+</div>

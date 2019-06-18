@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Servicio.DTO;
 using Servicio.Servicio;
+using Dominio;
 
 namespace FrontHP.Controllers
 {
@@ -24,6 +25,7 @@ namespace FrontHP.Controllers
             }
 
             List<DTO_Subordinado> dto = new List<DTO_Subordinado>();
+
             foreach (var item in sr)
             {
                 DTO_Subordinado dto_sub = new DTO_Subordinado();
@@ -42,17 +44,33 @@ namespace FrontHP.Controllers
 
         public ActionResult Error()
         {
-
             return View();
         }
-        [HttpGet]
+        
          public ActionResult CrearLegajo(int? id)
         {
 
-            return View();
+            dominio_subordinado srv = new dominio_subordinado();
+            var coso = srv.ObtenerPorDNI(id);
+
+            return View(coso); 
         }
 
 
+        public PartialViewResult MostrarCheckHomeGrupal(int id)
+        {
+            if (id==1)
+            {
+                return PartialView("_MostrarCheckHomeGrupal");
+            }
+            else
+            {
+                return PartialView("_SinSeleccion");     
+            }
+
+
+            
+        }
 
     }
 }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dominio_servicio.cs" />
+    <Compile Include="dominio_solicitud.cs" />
     <Compile Include="dominio_subordinado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

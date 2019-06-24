@@ -22,3 +22,15 @@ C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.csproj.
 C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.csproj.CopyComplete
 C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.dll
 C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\obj\Debug\Modelo.pdb
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\bin\Debug\Modelo.dll.config
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\bin\Debug\Modelo.dll
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\bin\Debug\Modelo.pdb
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\bin\Debug\EntityFramework.dll
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\bin\Debug\EntityFramework.xml
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\obj\Debug\Modelo.csprojAssemblyReference.cache
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\obj\Debug\Modelo.csproj.CoreCompileInputs.cache
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\obj\Debug\Modelo.csproj.CopyComplete
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\obj\Debug\Modelo.dll
+C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\obj\Debug\Modelo.pdb

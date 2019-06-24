@@ -4,54 +4,104 @@
     <EntitySetMapping Name="WEB_Aplicacion">
       <EntityTypeMapping TypeName="FRONTModel.WEB_Aplicacion">
         <MappingFragment StoreEntitySet="WEB_Aplicacion">
-          <ScalarProperty Name="idapp" ColumnName="idapp" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="ruta" ColumnName="ruta" />
           <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idapp" ColumnName="idapp" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WEB_AppxServicio">
       <EntityTypeMapping TypeName="FRONTModel.WEB_AppxServicio">
         <MappingFragment StoreEntitySet="WEB_AppxServicio">
-          <ScalarProperty Name="idsrvapp" ColumnName="idsrvapp" />
-          <ScalarProperty Name="idservicio" ColumnName="idservicio" />
-          <ScalarProperty Name="idapp" ColumnName="idapp" />
           <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idapp" ColumnName="idapp" />
+          <ScalarProperty Name="idservicio" ColumnName="idservicio" />
+          <ScalarProperty Name="idsrvapp" ColumnName="idsrvapp" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WEB_AuditoriaAppxServ">
       <EntityTypeMapping TypeName="FRONTModel.WEB_AuditoriaAppxServ">
         <MappingFragment StoreEntitySet="WEB_AuditoriaAppxServ">
-          <ScalarProperty Name="idauditoria" ColumnName="idauditoria" />
-          <ScalarProperty Name="idsrvapp" ColumnName="idsrvapp" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="fechahora" ColumnName="fechahora" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idsrvapp" ColumnName="idsrvapp" />
+          <ScalarProperty Name="idauditoria" ColumnName="idauditoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEB_AuditoriaSolicitud">
+      <EntityTypeMapping TypeName="FRONTModel.WEB_AuditoriaSolicitud">
+        <MappingFragment StoreEntitySet="WEB_AuditoriaSolicitud">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_realizado" ColumnName="fecha_realizado" />
+          <ScalarProperty Name="revisado_por" ColumnName="revisado_por" />
+          <ScalarProperty Name="id_solicitud" ColumnName="id_solicitud" />
+          <ScalarProperty Name="id_auditoria_solicitud" ColumnName="id_auditoria_solicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEB_Equipo">
+      <EntityTypeMapping TypeName="FRONTModel.WEB_Equipo">
+        <MappingFragment StoreEntitySet="WEB_Equipo">
+          <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+          <ScalarProperty Name="tipo_id" ColumnName="tipo_id" />
+          <ScalarProperty Name="mac" ColumnName="mac" />
+          <ScalarProperty Name="subordinado_id" ColumnName="subordinado_id" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WEB_Servicio">
       <EntityTypeMapping TypeName="FRONTModel.WEB_Servicio">
         <MappingFragment StoreEntitySet="WEB_Servicio">
-          <ScalarProperty Name="idservicio" ColumnName="idservicio" />
-          <ScalarProperty Name="servicio" ColumnName="servicio" />
           <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="servicio" ColumnName="servicio" />
+          <ScalarProperty Name="idservicio" ColumnName="idservicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEB_Solicitud">
+      <EntityTypeMapping TypeName="FRONTModel.WEB_Solicitud">
+        <MappingFragment StoreEntitySet="WEB_Solicitud">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="escritura_home" ColumnName="escritura_home" />
+          <ScalarProperty Name="acceso_remoto" ColumnName="acceso_remoto" />
+          <ScalarProperty Name="impresora" ColumnName="impresora" />
+          <ScalarProperty Name="rayos" ColumnName="rayos" />
+          <ScalarProperty Name="laboratorio" ColumnName="laboratorio" />
+          <ScalarProperty Name="internet" ColumnName="internet" />
+          <ScalarProperty Name="home_grupal" ColumnName="home_grupal" />
+          <ScalarProperty Name="home_personal" ColumnName="home_personal" />
+          <ScalarProperty Name="wifi" ColumnName="wifi" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+          <ScalarProperty Name="subordinado_id" ColumnName="subordinado_id" />
+          <ScalarProperty Name="id_solicitud" ColumnName="id_solicitud" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WEB_Subordinado">
       <EntityTypeMapping TypeName="FRONTModel.WEB_Subordinado">
         <MappingFragment StoreEntitySet="WEB_Subordinado">
-          <ScalarProperty Name="id_subordinado" ColumnName="id_subordinado" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="mail" ColumnName="mail" />
-          <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="servicio_id" ColumnName="servicio_id" />
-          <ScalarProperty Name="apellido" ColumnName="apellido" />
-          <ScalarProperty Name="dni" ColumnName="dni" />
-          <ScalarProperty Name="registrado_por" ColumnName="registrado_por" />
           <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="registrado_por" ColumnName="registrado_por" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="servicio_id" ColumnName="servicio_id" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_subordinado" ColumnName="id_subordinado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEB_TipoEquipo">
+      <EntityTypeMapping TypeName="FRONTModel.WEB_TipoEquipo">
+        <MappingFragment StoreEntitySet="WEB_TipoEquipo">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

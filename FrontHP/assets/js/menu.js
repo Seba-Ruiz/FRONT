@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     //var url = "/FrontHP/Home/Menu"; //para iis
-    var url = "../Home/Menu"; //para local test
+    var url = "/Home/Menu"; //para local test
     var conc = '';
 
     $.getJSON(url, function (data) {

@@ -5,15 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="41d14d2758234bc78f7ba3292caa0569" Name="Diagram1">
-        <EntityTypeShape EntityType="FRONTModel.WEB_Aplicacion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FRONTModel.WEB_AppxServicio" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FRONTModel.WEB_AuditoriaAppxServ" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FRONTModel.WEB_Servicio" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FRONTModel.WEB_Subordinado" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <AssociationConnector Association="FRONTModel.FK_WEB_AppxServicio_WEB_Aplicacion" ManuallyRouted="false" />
-        <AssociationConnector Association="FRONTModel.FK_WEB_AppxServicio_WEB_Servicio" ManuallyRouted="false" />
-        <AssociationConnector Association="FRONTModel.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" ManuallyRouted="false" />
-        <AssociationConnector Association="FRONTModel.FK_WEB_Subordinado_WEB_Servicio" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_Aplicacion" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_AppxServicio" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_AuditoriaAppxServ" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_AuditoriaSolicitud" Width="1.5" PointX="7.5" PointY="11.5" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_Equipo" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_Servicio" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_Solicitud" Width="1.5" PointX="5.25" PointY="10.625" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_Subordinado" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="FRONTModel.WEB_TipoEquipo" Width="1.5" PointX="3" PointY="12.625" />
+        <AssociationConnector Association="FRONTModel.FK_WEB_AppxServicio_WEB_Aplicacion" />
+        <AssociationConnector Association="FRONTModel.FK_WEB_AppxServicio_WEB_Servicio" />
+        <AssociationConnector Association="FRONTModel.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" />
+        <AssociationConnector Association="FRONTModel.FK_WEB_AuditoriaSolicitud_WEB_Solicitud" />
+        <AssociationConnector Association="FRONTModel.FK_WEB_Equipo_WEB_Subordinado" />
+        <AssociationConnector Association="FRONTModel.FK_WEB_Equipo_WEB_TipoEquipo" />
+        <AssociationConnector Association="FRONTModel.FK_WEB_Subordinado_WEB_Servicio" />
+        <AssociationConnector Association="FRONTModel.FK_WEB_Solicitud_WEB_Subordinado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

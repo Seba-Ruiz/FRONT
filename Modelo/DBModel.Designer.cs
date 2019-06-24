@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\leonardo.ruiz\Documents\FRONT_WEB\FRONT\Modelo\DBModel.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\sebastian.roggerone\source\repos\FRONT\Modelo\DBModel.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

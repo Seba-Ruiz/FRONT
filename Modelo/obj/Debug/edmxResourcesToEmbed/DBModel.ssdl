@@ -27,6 +27,26 @@
     <Property Name="estado" Type="nvarchar" MaxLength="4" Nullable="false" />
     <Property Name="fechahora" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="WEB_AuditoriaSolicitud">
+    <Key>
+      <PropertyRef Name="id_auditoria_solicitud" />
+    </Key>
+    <Property Name="id_auditoria_solicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_solicitud" Type="int" Nullable="false" />
+    <Property Name="revisado_por" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha_realizado" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WEB_Equipo">
+    <Key>
+      <PropertyRef Name="id_equipo" />
+    </Key>
+    <Property Name="id_equipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subordinado_id" Type="int" />
+    <Property Name="mac" Type="nvarchar" MaxLength="25" />
+    <Property Name="tipo_id" Type="int" />
+    <Property Name="fecha_alta" Type="date" />
+  </EntityType>
   <EntityType Name="WEB_Servicio">
     <Key>
       <PropertyRef Name="idservicio" />
@@ -34,6 +54,24 @@
     <Property Name="idservicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="servicio" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WEB_Solicitud">
+    <Key>
+      <PropertyRef Name="id_solicitud" />
+    </Key>
+    <Property Name="id_solicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subordinado_id" Type="int" Nullable="false" />
+    <Property Name="fecha_solicitud" Type="datetime" Nullable="false" />
+    <Property Name="wifi" Type="bit" Nullable="false" />
+    <Property Name="home_personal" Type="bit" Nullable="false" />
+    <Property Name="home_grupal" Type="bit" Nullable="false" />
+    <Property Name="internet" Type="bit" Nullable="false" />
+    <Property Name="laboratorio" Type="bit" Nullable="false" />
+    <Property Name="rayos" Type="bit" Nullable="false" />
+    <Property Name="impresora" Type="bit" Nullable="false" />
+    <Property Name="acceso_remoto" Type="bit" Nullable="false" />
+    <Property Name="escritura_home" Type="bit" Nullable="false" />
+    <Property Name="estado" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="WEB_Subordinado">
     <Key>
@@ -48,6 +86,14 @@
     <Property Name="dni" Type="int" />
     <Property Name="registrado_por" Type="nvarchar" MaxLength="100" />
     <Property Name="fecha_registro" Type="date" />
+  </EntityType>
+  <EntityType Name="WEB_TipoEquipo">
+    <Key>
+      <PropertyRef Name="id_tipo" />
+    </Key>
+    <Property Name="id_tipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="60" />
+    <Property Name="estado" Type="bit" />
   </EntityType>
   <Association Name="FK_WEB_AppxServicio_WEB_Aplicacion">
     <End Role="WEB_Aplicacion" Type="Self.WEB_Aplicacion" Multiplicity="1" />
@@ -85,6 +131,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_WEB_AuditoriaSolicitud_WEB_Solicitud">
+    <End Role="WEB_Solicitud" Type="Self.WEB_Solicitud" Multiplicity="1" />
+    <End Role="WEB_AuditoriaSolicitud" Type="Self.WEB_AuditoriaSolicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_Solicitud">
+        <PropertyRef Name="id_solicitud" />
+      </Principal>
+      <Dependent Role="WEB_AuditoriaSolicitud">
+        <PropertyRef Name="id_solicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_Equipo_WEB_Subordinado">
+    <End Role="WEB_Subordinado" Type="Self.WEB_Subordinado" Multiplicity="0..1" />
+    <End Role="WEB_Equipo" Type="Self.WEB_Equipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_Subordinado">
+        <PropertyRef Name="id_subordinado" />
+      </Principal>
+      <Dependent Role="WEB_Equipo">
+        <PropertyRef Name="subordinado_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_Equipo_WEB_TipoEquipo">
+    <End Role="WEB_TipoEquipo" Type="Self.WEB_TipoEquipo" Multiplicity="0..1" />
+    <End Role="WEB_Equipo" Type="Self.WEB_Equipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_TipoEquipo">
+        <PropertyRef Name="id_tipo" />
+      </Principal>
+      <Dependent Role="WEB_Equipo">
+        <PropertyRef Name="tipo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_Solicitud_WEB_Subordinado">
+    <End Role="WEB_Subordinado" Type="Self.WEB_Subordinado" Multiplicity="1" />
+    <End Role="WEB_Solicitud" Type="Self.WEB_Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_Subordinado">
+        <PropertyRef Name="id_subordinado" />
+      </Principal>
+      <Dependent Role="WEB_Solicitud">
+        <PropertyRef Name="subordinado_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_WEB_Subordinado_WEB_Servicio">
     <End Role="WEB_Servicio" Type="Self.WEB_Servicio" Multiplicity="0..1" />
     <End Role="WEB_Subordinado" Type="Self.WEB_Subordinado" Multiplicity="*" />
@@ -101,8 +195,12 @@
     <EntitySet Name="WEB_Aplicacion" EntityType="Self.WEB_Aplicacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WEB_AppxServicio" EntityType="Self.WEB_AppxServicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WEB_AuditoriaAppxServ" EntityType="Self.WEB_AuditoriaAppxServ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_AuditoriaSolicitud" EntityType="Self.WEB_AuditoriaSolicitud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_Equipo" EntityType="Self.WEB_Equipo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WEB_Servicio" EntityType="Self.WEB_Servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_Solicitud" EntityType="Self.WEB_Solicitud" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WEB_Subordinado" EntityType="Self.WEB_Subordinado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_TipoEquipo" EntityType="Self.WEB_TipoEquipo" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_WEB_AppxServicio_WEB_Aplicacion" Association="Self.FK_WEB_AppxServicio_WEB_Aplicacion">
       <End Role="WEB_Aplicacion" EntitySet="WEB_Aplicacion" />
       <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
@@ -114,6 +212,22 @@
     <AssociationSet Name="FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" Association="Self.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio">
       <End Role="WEB_AppxServicio" EntitySet="WEB_AppxServicio" />
       <End Role="WEB_AuditoriaAppxServ" EntitySet="WEB_AuditoriaAppxServ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_AuditoriaSolicitud_WEB_Solicitud" Association="Self.FK_WEB_AuditoriaSolicitud_WEB_Solicitud">
+      <End Role="WEB_Solicitud" EntitySet="WEB_Solicitud" />
+      <End Role="WEB_AuditoriaSolicitud" EntitySet="WEB_AuditoriaSolicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_Equipo_WEB_Subordinado" Association="Self.FK_WEB_Equipo_WEB_Subordinado">
+      <End Role="WEB_Subordinado" EntitySet="WEB_Subordinado" />
+      <End Role="WEB_Equipo" EntitySet="WEB_Equipo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_Equipo_WEB_TipoEquipo" Association="Self.FK_WEB_Equipo_WEB_TipoEquipo">
+      <End Role="WEB_TipoEquipo" EntitySet="WEB_TipoEquipo" />
+      <End Role="WEB_Equipo" EntitySet="WEB_Equipo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_Solicitud_WEB_Subordinado" Association="Self.FK_WEB_Solicitud_WEB_Subordinado">
+      <End Role="WEB_Subordinado" EntitySet="WEB_Subordinado" />
+      <End Role="WEB_Solicitud" EntitySet="WEB_Solicitud" />
     </AssociationSet>
     <AssociationSet Name="FK_WEB_Subordinado_WEB_Servicio" Association="Self.FK_WEB_Subordinado_WEB_Servicio">
       <End Role="WEB_Servicio" EntitySet="WEB_Servicio" />

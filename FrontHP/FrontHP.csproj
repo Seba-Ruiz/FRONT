@@ -2866,6 +2866,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReferenteController.cs" />
@@ -3126,6 +3127,7 @@
     <Content Include="Views\Subordinado\CargarSubordinado.cshtml" />
     <Content Include="Views\Referente\Index.cshtml" />
     <Content Include="Views\Referente\Error.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

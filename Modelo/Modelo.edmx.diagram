@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c8b37c47537f476facebf8dcbf666837" Name="Diagram1">
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_Aplicacion" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_AppxServicio" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_AuditoriaAppxServ" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_AuditoriaSolicitud" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_Equipo" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_Servicio" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_Solicitud" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_Subordinado" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPerrupatoOFFModel.WEB_TipoEquipo" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="HPerrupatoOFFModel.FK_WEB_AppxServicio_WEB_Aplicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="HPerrupatoOFFModel.FK_WEB_AppxServicio_WEB_Servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="HPerrupatoOFFModel.FK_WEB_AuditoriaAppxServ_WEB_AppxServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="HPerrupatoOFFModel.FK_WEB_AuditoriaSolicitud_WEB_Solicitud" ManuallyRouted="false" />
+        <AssociationConnector Association="HPerrupatoOFFModel.FK_WEB_Equipo_WEB_Subordinado" ManuallyRouted="false" />
+        <AssociationConnector Association="HPerrupatoOFFModel.FK_WEB_Equipo_WEB_TipoEquipo" ManuallyRouted="false" />
+        <AssociationConnector Association="HPerrupatoOFFModel.FK_WEB_Subordinado_WEB_Servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="HPerrupatoOFFModel.FK_WEB_Solicitud_WEB_Subordinado" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

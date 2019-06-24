@@ -88,6 +88,24 @@ namespace Dominio
             return tel;
         }
 
+        public WEB_Subordinado ObtenerPorID(int id)
+        {
+            var sub = new WEB_Subordinado();
+            try
+            {
+                using (var ctx = new FRONTEntities())
+
+                    sub = ctx.WEB_Subordinado.Where(x => x.id_subordinado == id)
+                        .FirstOrDefault();
+            }
+            catch (Exception E)
+            {
+
+                throw E;
+            }
+            return sub;
+        }
+
         public WEB_Subordinado ObtenerPorDNI(int? id)
         {
             var sub = new WEB_Subordinado();

@@ -12,29 +12,19 @@ namespace Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class WEB_Subordinado
+    public partial class WEB_TipoEquipo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public WEB_Subordinado()
+        public WEB_TipoEquipo()
         {
             this.WEB_Equipo = new HashSet<WEB_Equipo>();
-            this.WEB_Solicitud = new HashSet<WEB_Solicitud>();
         }
     
-        public int id_subordinado { get; set; }
+        public int id_tipo { get; set; }
         public string nombre { get; set; }
-        public string mail { get; set; }
         public Nullable<bool> estado { get; set; }
-        public Nullable<int> servicio_id { get; set; }
-        public string apellido { get; set; }
-        public Nullable<int> dni { get; set; }
-        public string registrado_por { get; set; }
-        public Nullable<System.DateTime> fecha_registro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WEB_Equipo> WEB_Equipo { get; set; }
-        public virtual WEB_Servicio WEB_Servicio { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WEB_Solicitud> WEB_Solicitud { get; set; }
     }
 }

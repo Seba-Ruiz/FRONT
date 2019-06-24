@@ -17,8 +17,6 @@ namespace Servicio.Servicio
             var nombre_servicio = servicio.servicio;
 
             return nombre_servicio;
-
-
         }
 
 

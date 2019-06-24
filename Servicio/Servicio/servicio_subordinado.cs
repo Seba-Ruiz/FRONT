@@ -81,6 +81,22 @@ namespace Servicio.Servicio
         }
 
 
+        public void ActualizarEstado(int id_subordinado)
+        {
+            dominio_subordinado sub = new dominio_subordinado();
+            var empleado = sub.ObtenerPorID(id_subordinado);
+
+            empleado.estado = true;
+
+            sub.Guardar(empleado);
+
+
+
+        }
+
+
+
+
     }
 
 

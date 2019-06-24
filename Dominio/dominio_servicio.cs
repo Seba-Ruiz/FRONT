@@ -11,20 +11,20 @@ namespace Dominio
     {
         public List<WEB_Servicio> Listar()
         {
-            var tel = new List<WEB_Servicio>();
+            var serv = new List<WEB_Servicio>();
             try
             {
                 using (var ctx = new FRONTEntities())
 
-                    tel = ctx.WEB_Servicio
-                        .ToList();
+                    serv = ctx.WEB_Servicio
+                            .ToList();
             }
             catch (Exception E)
             {
 
                 throw E;
             }
-            return tel;
+            return serv;
         }
 
         public WEB_Servicio BuscarXNombre(string nombre)

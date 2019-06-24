@@ -1,13 +1,16 @@
 ﻿
 
 <div class="radio radio-primary">
-    <input type="radio" name="radio" id="escritura" value="option1" checked>
+     @Html.RadioButton("escritura","SI", new {@checked= "checked" })
+    @*<input type="radio" name="radio" id="lectura" value="1" checked>*@
     <label for="escritura">
         <b>Modificación/Escritura</b> (Podrá modificar y crear nuevos documentos)
     </label>
 </div>
+
 <div class="radio radio-purple">
-    <input type="radio" name="radio" id="lectura" value="option2">
+    @Html.RadioButton("escritura", "NO")
+    @*<input type="radio" name="radio" id="lectura" value="2">*@
     <label for="lectura">
         <b>Solo lectura</b> (Solo podra visualizar documentos)
     </label>

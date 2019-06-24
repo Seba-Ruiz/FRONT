@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Modelo.WEB_TipoEquipo>
+@{
+    var tipoEquipo = Model;
+}
+
+<div class="form-group">
+    @Html.Label("Tipo de dispositivo:", new { @class = "text-primary" })
+    @Html.DropDownList("tipoEquipo", new SelectList(tipoEquipo, "id_tipo", "nombre"), new { @class = "form-control", @style = "width:180px;" })
+    <span class="font-13 text-muted">El usuario solo podrá disponer de un solo dispositivo conectado a la red</span>
+</div>
+
+
+<div class="form-group">
+    @Html.Label("MAC dispositivo:", new { @class = "text-primary" })
+    <a class="fa fa-android text-muted inform fa-2x" title="Android: Ajustes -> Sistema -> Acerca del dispositivo -> Estado -> Dirección MAC de Wi-Fi"></a>
+    <a class="fa fa-apple text-muted inform fa-2x" title="IOS: Ajustes -> General -> Información -> Dirección de Wi-Fi"></a>
+    <a class="fa fa-windows text-muted inform fa-2x" title="Windows: Abrir Simbolo de Sistema -> Escribir  'getmac'"></a>
+    @Html.TextBox("mac", null, new { @class = "form-control", @data_mask = "**:**:**:**:**:**", @style = "text-transform:uppercase; width:180px;" })
+
+    <span class="font-13 text-muted">ej: "30:9C:23:A8:D7:8E"</span>
+
+</div>

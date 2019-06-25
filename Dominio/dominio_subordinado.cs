@@ -124,6 +124,42 @@ namespace Dominio
             return sub;
         }
 
+        public string ObtenerNombrePorId(int id)
+        {
+            try
+            {
+                using (var ctx = new FRONTEntities())
+                {
+                    string sub = (from s in ctx.WEB_Subordinado
+                                  where s.id_subordinado == id
+                                  select s.nombre + " " + s.apellido).FirstOrDefault();
+                    return sub;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
+        public string ObtenerServicioPorId(int id)
+        {
+            try
+            {
+                using (var ctx = new FRONTEntities())
+                {
+                    string svc = (from s in ctx.WEB_Subordinado
+                                  join sv in ctx.WEB_Servicio on s.servicio_id equals sv.idservicio
+                                  where s.servicio_id == id
+                                  select sv.servicio).FirstOrDefault();
+
+                    return svc;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

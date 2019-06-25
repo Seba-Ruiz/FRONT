@@ -50,7 +50,6 @@ namespace FrontHP.Controllers
         
          public ActionResult CrearLegajo(int? id)
         {
-
             dominio_subordinado srv = new dominio_subordinado();
             var coso = srv.ObtenerPorDNI(id);
 

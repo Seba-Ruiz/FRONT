@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="row">
     <div class="col-sm-12">
         <div class="card-box table-responsive">
@@ -30,14 +31,31 @@
                             <td>@x.servicio</td>
                             <td>@x.estado</td>
                             <td>@x.fecha_solicitud</td>
-                            <td></td>
+                            <td><a style="cursor: pointer;" title="Requerimientos del Referente Informatico" onclick="send(@x.idsolicitud)" class="ti-notepad"></a></td>
                         </tr>
                     }
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
 
-<br />
+<div class="modal fade" id="motivo" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="resultado"></div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function send(e) {
+        var url = "@Url.Action("SolicitudPorEmpleado", "Admin", new { id="param-id"})";
+        url = url.replace("param-id", e);
+
+        $("#resultado").load(url);
+        $("#motivo").modal('show');
+    }
+</script>

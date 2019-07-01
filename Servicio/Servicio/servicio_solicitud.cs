@@ -65,6 +65,33 @@ namespace Servicio.Servicio
             return dto;
         }
 
+        public List<DTO_Solicitud> SolicitudesPendientesXId(int id)
+        {
+            var ls = ds.ListarXId(id);
+            List<DTO_Solicitud> dto = new List<DTO_Solicitud>();
+            foreach (var item in ls)
+            {
+                DTO_Solicitud s = new DTO_Solicitud();
+                s.idsolicitud = item.id_solicitud;
+                s.subordinado = su.ObtenerNombrePorId(item.subordinado_id);
+                s.servicio = su.ObtenerServicioPorId(item.subordinado_id);
+                s.fecha_solicitud = item.fecha_solicitud;
+                s.wifi = item.wifi;
+                s.home_personal = item.home_personal;
+                s.home_grupal = item.home_grupal;
+                s.internet = item.internet;
+                s.laboratorio = item.laboratorio;
+                s.rayos = item.rayos;
+                s.impresora = item.impresora;
+                s.acceso_remoto = item.acceso_remoto;
+                s.escritura_home = item.escritura_home;
+                s.estado = item.estado;
+
+                dto.Add(s);
+            }
+            return dto;
+        }
+
 
     }
 }

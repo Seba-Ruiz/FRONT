@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Servicio.Servicio;
+using Modelo;
 
 namespace FrontHP.Controllers
 {
@@ -14,6 +15,13 @@ namespace FrontHP.Controllers
         {
             var sol = ss.SolicitudesPendientes();
             return View(sol);
+        }
+
+        public ActionResult SolicitudPorEmpleado(int id)
+        {
+            FRONTEntities ctx = new FRONTEntities();
+            var obj = ss.SolicitudesPendientesXId(id);
+            return PartialView("_RequerimientoSubordinado",obj);
         }
     }
 }

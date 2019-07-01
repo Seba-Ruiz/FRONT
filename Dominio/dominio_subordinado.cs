@@ -148,12 +148,12 @@ namespace Dominio
             {
                 using (var ctx = new FRONTEntities())
                 {
-                    string svc = (from s in ctx.WEB_Subordinado
-                                  join sv in ctx.WEB_Servicio on s.servicio_id equals sv.idservicio
-                                  where s.servicio_id == id
-                                  select sv.servicio).FirstOrDefault();
+                    string srv = (from a in ctx.WEB_Subordinado
+                                  join b in ctx.WEB_Servicio on a.servicio_id equals b.idservicio
+                                  where a.id_subordinado == id
+                                  select b.servicio).FirstOrDefault();
 
-                    return svc;
+                    return srv;
                 }
             }
             catch (Exception e)

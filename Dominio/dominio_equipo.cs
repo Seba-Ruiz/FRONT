@@ -32,5 +32,23 @@ namespace Dominio
                 throw E;
             }
         }
+
+        public WEB_Equipo ObtenerPorIdSubordinado(int id)
+        {
+            var sol = new WEB_Equipo();
+            try
+            {
+                using (var ctx = new FRONTEntities())
+
+                    sol = ctx.WEB_Equipo.OrderByDescending(x => x.id_equipo).Where(x=>x.subordinado_id==id)
+                                                .FirstOrDefault();
+
+            }
+            catch (Exception E)
+            {
+                throw E;
+            }
+            return sol;
+        }
     }
 }

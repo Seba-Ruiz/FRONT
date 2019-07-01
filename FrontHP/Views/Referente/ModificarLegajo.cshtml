@@ -1,0 +1,230 @@
+﻿@model Servicio.DTO.DTO_Solicitud_Guardar
+@{
+    ViewBag.Title = "ModificarLegajo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+       
+        <ol class="breadcrumb">
+           
+            <li>
+                <a href="~/Referente/Index">Personal</a>
+            </li>
+            <li class="active">
+                Modificar Legajo
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <h4 class="m-t-0 header-title"><b>LEGAJO DIGITAL</b></h4>
+            <p class="text-muted m-b-30 font-13">
+                Llene este formulario para modificar los servicios que <b class="text-primary">@Model.nombre_sub @Model.apellido</b> tendrá. Recuerde que esta solicitud tiene caracter de declaración jurada.
+            </p>
+            <div class="row">
+                <div class="col-md-10">
+                    @using (Html.BeginForm("ModificarLegajo", "Referente", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(x => x.id_subordinado)
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Internet en PC</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("internet", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @if (Model.internet)
+	                                    {
+                                <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> acceso a internet. </small></span>
+	                                    }else
+	                                    {
+                                <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no tiene</b> acceso a internet. </small></span>
+	                                    }   
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Unidad Personal</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("h_personal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @if (Model.h_personal)
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> unidad personal. </small></span>
+                                }
+                                else
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no tiene</b> unidad personal. </small></span>
+                                }
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Unidad Grupal</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("h_grupal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @if (Model.h_grupal)
+                                {
+                                    <span class="help-block"><small>
+    Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> acceso a la unidad del servicio con @if (Model.escritura)
+    {
+        <b>permisos de modificacion.  </b>
+    }
+    else
+    {
+        <b>permisos de solo lectura.  </b>
+    }
+</small></span>
+                                }
+                                else
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no tiene</b> acceso a la unidad del servicio. </small></span>
+                                }
+                                <div id="acceso"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Laboratorio</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("laboratorio", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @if (Model.laboratorio)
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">puede</b> visualizar análisis. </small></span>
+                                }
+                                else
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no puede</b> visualizar análisis. </small></span>
+                                }
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Diagnostico por Imagen</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("rayos", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @if (Model.rayos)
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">puede</b> visualizar placas. </small></span>
+                                }
+                                else
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no puede</b> visualizar placas. </small></span>
+                                }
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Impresora</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("impresora", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @if (Model.impresora)
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">puede</b> imprimir con recursos de la institución. </small></span>
+                                }
+                                else
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no puede</b> imprimir con recursos de la institución. </small></span>
+                                }
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Wifi</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("wifi", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @if (Model.wifi)
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> cargado un/a <b class="text-primary">@Model.tipo_equipo</b>  y su numero de MAC es <b class="text-primary">@Model.mac</b>.
+                                         </small></span>
+                                }
+                                else
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no tiene</b> cargado un equipo. </small></span>
+                                }
+                                <div id="wi_fi"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Acceso Remoto</label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("vpn", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                
+                                @if (Model.vpn)
+                                {
+                                    <span class="help-block">
+                                        <small>
+                                            Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> acceso remoto configurado.
+                                        </small>
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no tiene</b> acceso remoto configurado. </small></span>
+                                }
+                            </div>
+                        </div>
+
+
+
+                        <div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h3><b class="text-danger">Atención</b></h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Crear LEGAJO?</h4>
+                                        - Al aceptar se creará la solicitud para <b class="text-primary">@Model.nombre_sub @Model.apellido</b>.<br />
+                                        - Los terminos de uso se enviarán por e-mail al empleado. <br />
+                                        - La autorización de uso queda sujeta a auditoria y podria demorar hasta 2 dias hábiles.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn-custom btn-default">Aceptar</button>
+                                        @*<a href="#" data-dismiss="modal" class="btn btn-default">Aceptar</a>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    <div class="text-center">
+                        <button class="btn-custom btn-primary" data-toggle="modal" data-target="#mostrarmodal">Guardar</button>
+                    </div>
+                </div>
+
+
+
+
+                <script src="~/assets/js/jquery.min.js"></script>
+                <script>
+                   $(document).ready(function () {
+                        $("#h_grupal").change(function () {
+                        var mivalor = $(this).val();
+                        var url = "@Url.Action("MostrarCheckHomeGrupal", "Referente", new { id = "param-1" })";
+                        url = url.replace("param-1", mivalor);
+                        $("#acceso").load(url);
+                    });
+                    });
+
+                    $(document).ready(function () {
+                        $("#wifi").change(function () {
+                        var val = $(this).val();
+                        var url = "@Url.Action("Wifi", "Referente", new { id = "param-1" })";
+                            url = url.replace("param-1", val);
+                        $("#wi_fi").load(url);
+                    });
+                    });
+
+
+
+
+                </script>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

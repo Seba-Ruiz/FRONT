@@ -10,6 +10,6 @@ namespace Servicio.DTO
     {
         public int id_subordinado { get; set; }
         public string mac { get; set; }
-        public int tipo_equipo { get; set; }
+        public int? tipo_equipo { get; set; }
     }
 }

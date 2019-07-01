@@ -22,10 +22,17 @@ namespace Servicio.Servicio
             eq.subordinado_id = dto.id_subordinado;
 
             equipo.Guardar(eq);
+        }
 
+        public WEB_Equipo ObtenerPorIdSubordinado(int id)
+        {
+            dominio_equipo equipo = new dominio_equipo();
+            var eq = equipo.ObtenerPorIdSubordinado(id);
 
-
+            return eq;
 
         }
+
+
     }
 }

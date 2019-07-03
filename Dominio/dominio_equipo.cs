@@ -50,5 +50,24 @@ namespace Dominio
             }
             return sol;
         }
+
+        public List<WEB_Equipo> Listar()
+        {
+            var equipo = new List<WEB_Equipo>();
+            try
+            {
+                using (var ctx = new FRONTEntities())
+
+                    equipo = ctx.WEB_Equipo
+                            .ToList();
+            }
+            catch (Exception E)
+            {
+
+                throw E;
+            }
+            return equipo;
+        }
+
     }
 }

@@ -11,4 +11,6 @@ namespace Servicio
         SI = 1,
         NO = 0
     }
+
+    
 }

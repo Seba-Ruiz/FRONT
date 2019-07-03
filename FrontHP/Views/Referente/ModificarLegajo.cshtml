@@ -30,26 +30,31 @@
             </p>
             <div class="row">
                 <div class="col-md-10">
-                    @using (Html.BeginForm("ModificarLegajo", "Referente", FormMethod.Post))
+                    @using (Html.BeginForm("ModificarL", "Referente", FormMethod.Post))
                     {
                         @Html.HiddenFor(x => x.id_subordinado)
+                        @Html.HiddenFor(x => x.id_solicitud)
+                        @Html.HiddenFor(x => x.nombre_sub)
+                        @Html.HiddenFor(x => x.apellido)
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Internet en PC</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("internet", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownListFor(x => x.internet, new SelectList(ViewBag.opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @*@Html.DropDownListFor(x => x.internet, EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })*@
                                 @if (Model.internet)
-	                                    {
-                                <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> acceso a internet. </small></span>
-	                                    }else
-	                                    {
-                                <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no tiene</b> acceso a internet. </small></span>
-	                                    }   
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> acceso a internet. </small></span>
+                                }
+                                else
+                                {
+                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b>  <b class="text-danger">no tiene</b> acceso a internet. </small></span>
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Unidad Personal</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("h_personal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownListFor(x=>x.h_personal, new SelectList(ViewBag.opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 @if (Model.h_personal)
                                 {
                                     <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> unidad personal. </small></span>
@@ -65,19 +70,21 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Unidad Grupal</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("h_grupal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownListFor(x=>x.h_grupal, new SelectList(ViewBag.opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 @if (Model.h_grupal)
                                 {
-                                    <span class="help-block"><small>
-    Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> acceso a la unidad del servicio con @if (Model.escritura)
-    {
-        <b>permisos de modificacion.  </b>
-    }
-    else
-    {
-        <b>permisos de solo lectura.  </b>
-    }
-</small></span>
+                                    <span class="help-block">
+                                        <small>
+                                            Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> acceso a la unidad del servicio con @if (Model.escritura)
+                                            {
+                                                <b>permisos de modificacion.  </b>
+                                            }
+                                            else
+                                            {
+                                                <b>permisos de solo lectura.  </b>
+                                            }
+                                        </small>
+                                    </span>
                                 }
                                 else
                                 {
@@ -89,7 +96,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Laboratorio</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("laboratorio", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownListFor(x=>x.laboratorio, new SelectList(ViewBag.opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 @if (Model.laboratorio)
                                 {
                                     <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">puede</b> visualizar análisis. </small></span>
@@ -103,7 +110,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Diagnostico por Imagen</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("rayos", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownListFor(x=>x.rayos, new SelectList(ViewBag.opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 @if (Model.rayos)
                                 {
                                     <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">puede</b> visualizar placas. </small></span>
@@ -117,7 +124,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Impresora</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("impresora", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownListFor(x=>x.impresora, new SelectList(ViewBag.opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 @if (Model.impresora)
                                 {
                                     <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">puede</b> imprimir con recursos de la institución. </small></span>
@@ -131,11 +138,14 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Wifi</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("wifi", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownListFor(x=>x.wifi, new SelectList(ViewBag.opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 @if (Model.wifi)
                                 {
-                                    <span class="help-block"><small>Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> cargado un/a <b class="text-primary">@Model.tipo_equipo</b>  y su numero de MAC es <b class="text-primary">@Model.mac</b>.
-                                         </small></span>
+                                    <span class="help-block">
+                                        <small>
+                                            Actualmente <b>@Model.nombre_sub</b> <b class="text-success">tiene</b> cargado un/a <b class="text-primary">@Model.tipo_equipo</b>  y su numero de MAC es <b class="text-primary">@Model.mac</b>.
+                                        </small>
+                                    </span>
                                 }
                                 else
                                 {
@@ -147,8 +157,8 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Acceso Remoto</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("vpn", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
-                                
+                                @Html.DropDownListFor(x=>x.vpn, new SelectList(ViewBag.opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+
                                 @if (Model.vpn)
                                 {
                                     <span class="help-block">

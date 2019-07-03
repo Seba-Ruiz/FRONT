@@ -92,6 +92,15 @@ namespace Servicio.Servicio
             return dto;
         }
 
+        public WEB_Solicitud ObtenerPorId(int? id)
+        {
+            dominio_solicitud dom_sol = new dominio_solicitud();
+            var solicitud = dom_sol.ObtenerPorId(id);
+
+            return solicitud;
+
+        }
+
 
     }
 }

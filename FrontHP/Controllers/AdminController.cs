@@ -19,9 +19,15 @@ namespace FrontHP.Controllers
 
         public ActionResult SolicitudPorEmpleado(int id)
         {
-            FRONTEntities ctx = new FRONTEntities();
             var obj = ss.SolicitudesPendientesXId(id);
             return PartialView("_RequerimientoSubordinado",obj);
+        }
+
+        [HttpGet]
+        public ActionResult Revisar(int id)
+        {
+
+            return PartialView("_Revisado");
         }
     }
 }

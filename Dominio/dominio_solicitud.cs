@@ -103,6 +103,7 @@ namespace Dominio
                 s.impresora = item.impresora;
                 s.acceso_remoto = item.acceso_remoto;
                 s.estado = item.estado;
+                s.escritura_home = item.escritura_home;
 
                 lista.Add(s);
             }

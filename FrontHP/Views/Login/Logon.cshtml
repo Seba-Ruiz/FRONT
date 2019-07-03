@@ -8,17 +8,21 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Logon</title>
+    <title>HPWEB</title>
+    <link rel="shortcut icon" href="~/assets/images/favicon_1.ico">
+    <link href="~/assets/css/login.css" rel="stylesheet" />
 </head>
 <body>
-    @using (Html.BeginForm("Logon", "Login", FormMethod.Post))
-    {
-        <div>
-            @Html.TextBox("txtUserName", "", new { @placeholder = "Usuario", @required = "" })
-            @Html.TextBox("txtPassword", "", new { @placeholder = "Contraseña", @required = "", type = "password" })
-            <div style="color:red">@ViewBag.Falla</div>
-            <button type="submit">Ingresar</button>
-        </div>
-    }
+    <div class="login-block">
+        @using (Html.BeginForm("Logon", "Login", FormMethod.Post))
+        {
+            <div>
+                @Html.TextBox("txtUserName", "")
+                @Html.TextBox("txtPassword", "", new { @type = "password" })
+                <div style="color:red">@ViewBag.Falla</div>
+                <button type="submit">Ingresar</button>
+            </div>
+        }
+    </div>
 </body>
 </html>

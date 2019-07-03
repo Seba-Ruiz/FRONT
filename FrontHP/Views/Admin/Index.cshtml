@@ -19,6 +19,8 @@
                         <th scope="col">Servicio</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Fecha</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
 
@@ -26,13 +28,14 @@
                 <tbody>
                     @foreach (var x in Model)
                     {
-                        <tr>
-                            <td>@x.subordinado</td>
-                            <td>@x.servicio</td>
-                            <td>@x.estado</td>
-                            <td>@x.fecha_solicitud</td>
-                            <td><a style="cursor: pointer;" title="Requerimientos del Referente Informatico" onclick="send(@x.idsolicitud)" class="ti-notepad"></a></td>
-                        </tr>
+                    <tr>
+                        <td>@x.subordinado</td>
+                        <td>@x.servicio</td>
+                        <td>@x.estado</td>
+                        <td>@x.fecha_solicitud</td>
+                        <td style="text-align:center"><a style="cursor: pointer;" title="Requerimientos por Empleado" onclick="send(@x.idsolicitud)" class="ti-notepad"></a></td>
+                        <td style="text-align:center"><a style="cursor: pointer;" title="Pasar a Revisado" onclick="revi(@x.idsolicitud)" class="ti-check-box"></a></td>
+                    </tr>
                     }
                 </tbody>
             </table>
@@ -42,20 +45,39 @@
 
 <div class="modal fade" id="motivo" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="resultado"></div>
+        <div class="modal-content">
+            <div id="resultado"></div>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+            <br />
+        </div>
     </div>
 </div>
 
-
-
+<div class="modal fade" id="revi" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="muestra"></div>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+            <br />
+        </div>
+    </div>
+</div>
 
 
 <script>
     function send(e) {
         var url = "@Url.Action("SolicitudPorEmpleado", "Admin", new { id="param-id"})";
         url = url.replace("param-id", e);
-
         $("#resultado").load(url);
         $("#motivo").modal('show');
+    }
+</script>
+
+<script>
+    function revi(d) {
+        var url = "@Url.Action("Revisar", "Admin", new { id= "param-id" })";
+        url = url.replace("param-id", d);
+        $("#muestra").load(url);
+        $("#revi").modal('show');
     }
 </script>

@@ -48,14 +48,15 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Internet en PC</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("internet", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownList("internet", new SelectList(ViewBag.Opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @*@Html.DropDownList("internet", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })*@
                                 <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> tenga acceso a Internet, "NO" para que no tenga acceso. </small></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Unidad Personal</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("h_personal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownList("h_personal", new SelectList(ViewBag.Opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> disponga de unidad de red personal.</small></span>
                             </div>
                         </div>
@@ -64,7 +65,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Unidad Grupal</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("h_grupal", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownList("h_grupal", new SelectList(ViewBag.Opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> disponga de unidad de red del servicio.</small></span>
                                 <div id="acceso"></div>
                             </div>
@@ -72,28 +73,28 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Laboratorio</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("laboratorio", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownList("laboratorio", new SelectList(ViewBag.Opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda visualizar resultados de análisis. </small></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Diagnostico por Imagen</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("rayos", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownList("rayos", new SelectList(ViewBag.Opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda visualizar placas. </small></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Impresora</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("impresora", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownList("impresora", new SelectList(ViewBag.Opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda imprimir con recursos de la institución. </small></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Wifi</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("wifi", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;",@required= "required" })
+                                @Html.DropDownList("wifi", new SelectList(ViewBag.Opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda registrar un dispositivo para acceso a internet desde el mismo. </small></span>
                                 <div id="wi_fi"></div>
                             </div>
@@ -101,7 +102,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Acceso Remoto</label>
                             <div class="col-sm-10">
-                                @Html.DropDownList("vpn", EnumHelper.GetSelectList(typeof(Servicio.Opciones)), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
+                                @Html.DropDownList("vpn", new SelectList(ViewBag.Opciones, "valor", "nombre"), "Elija opcion...", new { @class = "form-control", @style = "width:200px;", @required = "required" })
                                 <span class="help-block"><small>"SI" para que <b>@Model.nombre</b> pueda acceder a los servicios de la institución desde dispositivos externos a la institución </small></span>
                             </div>
                         </div>
@@ -117,7 +118,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <h4>Crear LEGAJO?</h4>
-                                        - Al aceptar se creará la solicitud para <b class="text-primary">@Model.nombre @Model.apellido</b>.<br /> 
+                                        - Al aceptar se creará la solicitud para <b class="text-primary">@Model.nombre @Model.apellido</b>.<br />
                                         - Los terminos de uso se enviarán por e-mail al empleado. <br />
                                         - La autorización de uso queda sujeta a auditoria y podria demorar hasta 2 dias hábiles.
                                     </div>
@@ -134,8 +135,10 @@
                         <button class="btn-custom btn-primary" data-toggle="modal" data-target="#mostrarmodal">Guardar</button>
                     </div>
                 </div>
-                
 
+                <div class="modal fade" id="motivo" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                    <div id="existe_mac"></div>
+                </div>
 
 
                 <script src="~/assets/js/jquery.min.js"></script>
@@ -158,10 +161,20 @@
                     });
                     });
 
+                    @*$(document).ready(function () {
 
+                        mac: $("#mac").val();
+                        var url = "@Url.Action("ExisteMAC", "Referente", new { id = "param-1" })";
+                        url = url.replace("param-1", val);
+                        $("#existe_mac").load(url);
+                        $("#motivo").modal('show');
+                        
+                    });*@
 
 
                 </script>
+
+
 
 
 

@@ -26,5 +26,26 @@ namespace Dominio
             }
             return sol;
         }
+
+
+        public WEB_TipoEquipo ObtenerPorNombre(string nombre)
+        {
+            var sol = new WEB_TipoEquipo();
+            try
+            {
+                using (var ctx = new FRONTEntities())
+
+                    sol = ctx.WEB_TipoEquipo.OrderByDescending(x => x.id_tipo).Where(x => x.nombre == nombre)
+                                                .FirstOrDefault();
+
+            }
+            catch (Exception E)
+            {
+                throw E;
+            }
+            return sol;
+        }
+
+
     }
 }

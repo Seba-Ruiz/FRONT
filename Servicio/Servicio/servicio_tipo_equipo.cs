@@ -18,5 +18,15 @@ namespace Servicio.Servicio
             return eq;
 
         }
+
+        public WEB_TipoEquipo ObtenerPorNombre(string nombre)
+        {
+            dominio_tipo_equipo equipo = new dominio_tipo_equipo();
+            var eq = equipo.ObtenerPorNombre(nombre);
+
+            return eq;
+
+        }
+
     }
 }

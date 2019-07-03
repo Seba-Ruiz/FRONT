@@ -32,6 +32,25 @@ namespace Servicio.Servicio
             return eq;
 
         }
+        public bool Existe_Mac(string mac)
+        {
+            dominio_equipo equi = new dominio_equipo();
+            var comparar = equi.Listar();
+            bool result = false;
+
+            foreach (var item in comparar)
+            {
+                if (item.mac == mac)
+                {
+                    result = true;
+                    return result;
+                }
+            }
+
+            return result;
+        }
+
+
 
 
     }

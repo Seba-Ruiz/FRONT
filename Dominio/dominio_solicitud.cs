@@ -126,5 +126,25 @@ namespace Dominio
             }
             return sub;
         }
+
+        public WEB_Solicitud ObtenerPorId(int? id)
+        {
+            var sol = new WEB_Solicitud();
+            try
+            {
+                using (var ctx = new FRONTEntities())
+
+                    sol = ctx.WEB_Solicitud.OrderByDescending(x => x.id_solicitud).Where(x => x.id_solicitud == id)
+                                                .FirstOrDefault();
+
+            }
+            catch (Exception E)
+            {
+                throw E;
+            }
+            return sol;
+        }
+
+
     }
 }

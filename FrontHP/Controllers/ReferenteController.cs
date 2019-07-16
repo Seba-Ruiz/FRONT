@@ -39,7 +39,6 @@ namespace FrontHP.Controllers
                 dto.Add(dto_sub);
             }
 
-
             return View(dto);
         }
 
@@ -100,18 +99,7 @@ namespace FrontHP.Controllers
             dominio_opciones dom_op = new dominio_opciones();
             ViewBag.opciones = dom_op.Listar();
 
-            //ViewBag.internet = new SelectList(dom_op.Listar(), "valor","nombre",solicitud.internet);
-            //ViewBag.h_personal = new SelectList(dom_op.Listar(), "valor", "nombre", solicitud.home_personal);
-            //ViewBag.h_grupal = new SelectList(dom_op.Listar(), "valor", "nombre", solicitud.home_grupal);
-            //ViewBag.laboratorio = new SelectList(dom_op.Listar(), "valor", "nombre", solicitud.laboratorio);
-            //ViewBag.rayos = new SelectList(dom_op.Listar(), "valor", "nombre", solicitud.rayos);
-            //ViewBag.impresora = new SelectList(dom_op.Listar(), "valor", "nombre", solicitud.impresora);
-            //ViewBag.wifi = new SelectList(dom_op.Listar(), "valor", "nombre", solicitud.wifi);
-            //ViewBag.vpn = new SelectList(dom_op.Listar(), "valor", "nombre", solicitud.acceso_remoto);
-
             
-
-           
             return View(dto);
         }
 
@@ -150,7 +138,7 @@ namespace FrontHP.Controllers
             solicitud.rayos = dto.rayos;
             solicitud.wifi = dto.wifi;
             solicitud.acceso_remoto = dto.vpn;
-
+            solicitud.estado = "MODIFICADO";
             dom_sol.Guardar(solicitud);
 
             if (dto.wifi & dto.mac != null & tipoEquipo != null)
@@ -163,7 +151,7 @@ namespace FrontHP.Controllers
                 dom_equipo.Guardar(equipo);
             }
 
-            //--AUDITORIO SOLICITUD--//
+            //--AUDITORIA SOLICITUD--//
             WEB_AuditoriaSolicitud auditoria = new WEB_AuditoriaSolicitud();
             dominio_auditoria_solicitud dom_soli = new dominio_auditoria_solicitud();
             dominio_solicitud sol = new dominio_solicitud();
@@ -220,11 +208,11 @@ namespace FrontHP.Controllers
             DTO_Solicitud_Guardar dto = new DTO_Solicitud_Guardar();
             servicio_equipo serv_equipo = new servicio_equipo();
 
-            if (mac != null)
-            {
-                var existe = serv_equipo.Existe_Mac(mac);
-                return Redirect("");
-            }
+            //if (mac != null)
+            //{
+            //    var existe = serv_equipo.Existe_Mac(mac);
+            //    return Redirect("");
+            //}
 
             dto.internet = internet;
             dto.h_personal = h_personal;
@@ -239,8 +227,6 @@ namespace FrontHP.Controllers
 
             serv_solicitud.Guardar(dto);
 
-
-            
             DTO_Equipo_Guardar dto_equipo = new DTO_Equipo_Guardar();
 
 

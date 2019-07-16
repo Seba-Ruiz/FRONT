@@ -26,8 +26,21 @@ namespace FrontHP.Controllers
         [HttpGet]
         public ActionResult Revisar(int id)
         {
+            try
+            {
+                ss.RevisaSolicitud(id);
+                return PartialView("_Revisado");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Error");
+            }
+            
+        }
 
-            return PartialView("_Revisado");
+        public ActionResult Error()
+        {
+            return View();
         }
     }
 }

@@ -28,14 +28,14 @@
                 <tbody>
                     @foreach (var x in Model)
                     {
-                    <tr>
-                        <td>@x.subordinado</td>
-                        <td>@x.servicio</td>
-                        <td>@x.estado</td>
-                        <td>@x.fecha_solicitud</td>
-                        <td style="text-align:center"><a style="cursor: pointer;" title="Requerimientos por Empleado" onclick="send(@x.idsolicitud)" class="ti-notepad"></a></td>
-                        <td style="text-align:center"><a style="cursor: pointer;" title="Pasar a Revisado" onclick="revi(@x.idsolicitud)" class="ti-check-box"></a></td>
-                    </tr>
+                        <tr>
+                            <td>@x.subordinado</td>
+                            <td>@x.servicio</td>
+                            <td>@x.estado</td>
+                            <td>@x.fecha_solicitud</td>
+                            <td style="text-align:center"><a style="cursor: pointer;" title="Requerimientos por Empleado" onclick="send(@x.idsolicitud)" class="ti-notepad"></a></td>
+                            <td style="text-align:center"><a style="cursor: pointer;" title="Pasar a Revisado" onclick="revi(@x.idsolicitud)" class="ti-check-box"></a></td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -53,16 +53,9 @@
     </div>
 </div>
 
-<div class="modal fade" id="revi" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div id="muestra"></div>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-            <br />
-        </div>
-    </div>
+<div id="revi" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div id="muestra"></div>
 </div>
-
 
 <script>
     function send(e) {

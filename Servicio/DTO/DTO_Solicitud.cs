@@ -13,6 +13,7 @@ namespace Servicio.DTO
         public string servicio { get; set; }
         public DateTime fecha_solicitud { get; set; }
         public bool wifi { get; set; }
+        public string mac { get; set; }
         public bool home_personal { get; set; }
         public bool home_grupal { get; set; }
         public bool internet { get; set; }

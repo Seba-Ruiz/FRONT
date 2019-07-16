@@ -220,11 +220,11 @@ namespace FrontHP.Controllers
             DTO_Solicitud_Guardar dto = new DTO_Solicitud_Guardar();
             servicio_equipo serv_equipo = new servicio_equipo();
 
-            if (mac != null)
-            {
-                var existe = serv_equipo.Existe_Mac(mac);
-                return Redirect("");
-            }
+            //if (mac != null)
+            //{
+            //    var existe = serv_equipo.Existe_Mac(mac);
+            //    return Redirect("");
+            //}
 
             dto.internet = internet;
             dto.h_personal = h_personal;

@@ -56,7 +56,7 @@ namespace Dominio
         public List<WEB_Solicitud> Listar()
         {
             var query = (from c in ctx.WEB_Solicitud
-                         where c.estado == "NO REVISADO" || c.estado == "MODIFICADO"
+                         where c.estado == "NO REVISADO" || c.estado == "MODIFICADO" || c.estado == "REVISADO"
                          select c).ToList();
             List<WEB_Solicitud> lista = new List<WEB_Solicitud>();
             foreach (var item in query)
@@ -85,7 +85,7 @@ namespace Dominio
             var query = (from c in ctx.WEB_Solicitud
                          where
                             c.id_solicitud == id &&
-                            c.estado == "NO REVISADO" || c.estado == "MODIFICADO"
+                            c.estado == "NO REVISADO" || c.estado == "MODIFICADO" || c.estado == "REVISADO"
                          select c).ToList();
             List<WEB_Solicitud> lista = new List<WEB_Solicitud>();
             foreach (var item in query)
@@ -145,6 +145,27 @@ namespace Dominio
             return sol;
         }
 
-
+        public void RevisaSolicitud(WEB_Solicitud sol)
+        {
+            try
+            {
+                using (var ctx = new FRONTEntities())
+                {
+                    if (sol.id_solicitud > 0) //Registro que ya existe
+                    {
+                        ctx.Entry(sol).State = EntityState.Modified;
+                    }
+                    else // Registro que es nuevo
+                    {
+                        ctx.Entry(sol).State = EntityState.Added;
+                    }
+                    ctx.SaveChanges();
+                }
+            }
+            catch (Exception E)
+            {
+                throw E;
+            }
+        }
     }
 }

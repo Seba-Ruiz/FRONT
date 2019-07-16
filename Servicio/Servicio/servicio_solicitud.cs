@@ -11,7 +11,8 @@ namespace Servicio.Servicio
 {
     public class servicio_solicitud
     {
-
+        dominio_solicitud ds = new dominio_solicitud();
+        dominio_subordinado su = new dominio_subordinado();
         public void Guardar(DTO_Solicitud_Guardar dto)
         {
             dominio_solicitud soli = new dominio_solicitud();
@@ -35,9 +36,6 @@ namespace Servicio.Servicio
 
         }
 
-
-        dominio_solicitud ds = new dominio_solicitud();
-        dominio_subordinado su = new dominio_subordinado();
         public List<DTO_Solicitud> SolicitudesPendientes()
         {
             var lista = ds.Listar();
@@ -50,6 +48,7 @@ namespace Servicio.Servicio
                 s.servicio = su.ObtenerServicioPorId(item.subordinado_id);
                 s.fecha_solicitud = item.fecha_solicitud;
                 s.wifi = item.wifi;
+                s.mac = su.ObtenerMacPorSubordinado(item.subordinado_id);
                 s.home_personal = item.home_personal;
                 s.home_grupal = item.home_grupal;
                 s.internet = item.internet;
@@ -77,6 +76,7 @@ namespace Servicio.Servicio
                 s.servicio = su.ObtenerServicioPorId(item.subordinado_id);
                 s.fecha_solicitud = item.fecha_solicitud;
                 s.wifi = item.wifi;
+                s.mac = su.ObtenerMacPorSubordinado(item.subordinado_id);
                 s.home_personal = item.home_personal;
                 s.home_grupal = item.home_grupal;
                 s.internet = item.internet;
@@ -101,6 +101,12 @@ namespace Servicio.Servicio
 
         }
 
+        public void RevisaSolicitud (int id)
+        {
+            var solicitud = ds.ObtenerPorId(id);
+            solicitud.estado = "REVISADO";
+            ds.RevisaSolicitud(solicitud);
+        }
 
     }
 }

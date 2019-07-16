@@ -161,5 +161,25 @@ namespace Dominio
                 throw e;
             }
         }
+
+        public string ObtenerMacPorSubordinado(int id)
+        {
+            try
+            {
+                using (var ctx = new FRONTEntities())
+                {
+                    string mac = (from a in ctx.WEB_Subordinado
+                                  join b in ctx.WEB_Equipo on a.id_subordinado equals b.subordinado_id
+                                  where a.id_subordinado == id
+                                  select b.mac).FirstOrDefault();
+
+                    return mac;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
